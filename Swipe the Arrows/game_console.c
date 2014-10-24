@@ -4,7 +4,7 @@ Title:			Game Console C
 Initial Author:	Ang Li 631317
 Software:		AVR-GCC
 Hardware:		ATMEGA16 @ 8Mhz
-Github:			https://github.com/leeang/ELEN
+Github:			https://github.com/leeang/Embedded-System-Design
 
 ********* ********* ********* ********* ********* ********* ********* ********* *********/
 
