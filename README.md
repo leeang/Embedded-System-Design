@@ -3,12 +3,12 @@
 ###"swipe the arrows" folder has following functions:
 *  button  
 *  PWM  
-* LCD  
-* interrupt (button)  
-* analog-to-digital conversion  
-* low power LED  
-* FRAM  
-* game (swipe the arrows)  
+*  LCD  
+*  interrupt (button)  
+*  analog-to-digital conversion  
+*  low power LED  
+*  FRAM  
+*  game (swipe the arrows)  
 
 ###"frame buffer" folder has following functions:
 * button  
