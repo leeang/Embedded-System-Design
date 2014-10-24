@@ -1,8 +1,8 @@
 ##ELEN90066 Embedded System Design
 
 ###"swipe the arrows" folder has following functions:
-* button  
-* PWM  
+*  button  
+*  PWM  
 * LCD  
 * interrupt (button)  
 * analog-to-digital conversion  
