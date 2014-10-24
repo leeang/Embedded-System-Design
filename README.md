@@ -1,6 +1,6 @@
 ##ELEN90066 Embedded System Design
 
-###"swipe the arrows" folder has following functions:
+###"Swipe the Arrows" folder has following functions:
 * button  
 * PWM  
 * LCD  
@@ -10,7 +10,7 @@
 * FRAM  
 * game (swipe the arrows)  
 
-###"frame buffer" folder has following functions:
+###"Frame buffer" folder has following functions:
 * button  
 * PWM  
 * LCD  
