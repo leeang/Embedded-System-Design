@@ -11,9 +11,9 @@ FRAM
 game (swipe the arrows)  
 
 ###"frame buffer" folder has following functions:
-button
-PWM
-LCD
-interrupt (button)
-frame buffer
-game (draw picture)
+button  
+PWM  
+LCD  
+interrupt (button)  
+frame buffer  
+game (draw picture)  
