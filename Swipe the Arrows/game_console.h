@@ -1,8 +1,14 @@
 /********* ********* ********* ********* ********* ********* ********* ********* *********
 
-Title:			Game Console H
-Software:		AVR-GCC
-Hardware:		ATMEGA16 @ 8Mhz
+Title:			Game Console Header File
+Processor:		ATMEGA16 @ 8Mhz
+F-RAM:			FM25L16B
+LCD:			EA DOGS102W-6 + EA LED39x41-A (backlight)
+LCD Controller:	UC1701x
+
+Author:			Ang Li
+E-mail:			ang#ang.im	(substitute @ for #)
+Blog:			http://blog.leeang.com/
 Github:			https://github.com/leeang/Embedded-System-Design
 
 ********* ********* ********* ********* ********* ********* ********* ********* *********/
