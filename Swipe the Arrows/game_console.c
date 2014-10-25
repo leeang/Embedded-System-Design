@@ -14,7 +14,6 @@ Github:			https://github.com/leeang/Embedded-System-Design
 int timer = 9;
 int randomNum;
 byte start = TRUE;
-byte restart = FALSE;
 byte score = 0;
 byte luminance = BOTTOM;
 
@@ -643,7 +642,6 @@ ISR(INT2_vect) {
 		drawLastScore(FRAM_Read());
 		
 		start = TRUE;
-		restart = FALSE;
 		TCNT1 = 57723;
 	}
 
@@ -674,16 +672,15 @@ int main(void) {
 	LCD_Init();
 	_delay_ms(32);
 	LCD_Clean();
-	// LCD_Ready();
 	PWM_Init();
-	buttonInterruptInit();
-	timerInterruptInit();
-	sei();	// set global interrupt enable
 	analogReadInit();
 	lowLED_Init();
 	FRAM_Init();
 	USART_Init(51);
 	// for 8Mhz and baud 9600 UBRR = 51
+	buttonInterruptInit();
+	timerInterruptInit();
+	sei();	// set global interrupt enable
 
 	int i;
 	srand(analogRead());
