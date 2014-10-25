@@ -9,6 +9,7 @@
 * low power LED  
 * FRAM  
 * game (swipe the arrows)  
+* USART Transmit (char & string)  
 
 ###"Frame buffer" folder has following functions:
 * button  
@@ -17,3 +18,4 @@
 * interrupt (button)  
 * frame buffer  
 * game (draw picture)  
+* USART Transmit (char & string)  
