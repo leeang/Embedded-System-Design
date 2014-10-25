@@ -17,4 +17,4 @@
 * LCD  
 * Interrupt (button)  
 * Frame buffer  
-* Game (draw picture)  
+* Game (draw picture, toggle 'keep pixel' by pressing button A)  
