@@ -72,7 +72,7 @@ void pinInit(void) {
 	SS_STATE(HIGH);
 }
 
-void interruptInit(void) {
+void buttonInterruptInit(void) {
 	GICR = _BV(INT2);
 /*
 	Page 48
@@ -105,7 +105,9 @@ void interruptInit(void) {
 	Bit 1, 0 - ISC01, ISC00: Interrupt Sense Control 0 Bit 1 and Bit 0
 		11	The rising edge of INT0 generates an interrupt request.
 */
+}
 
+void timerInterruptInit(void) {
 	TIMSK = _BV(TOIE1);
 /*
 	Page 115
@@ -122,7 +124,6 @@ void interruptInit(void) {
 	Bit 2:0 - CS12:0: Clock Select
 		101	clkI/O/1024 (From prescaler)
 */
-	sei();	// set global interrupt enable
 }
 
 void lowLED_Init(void) {
@@ -628,7 +629,22 @@ ISR(INT2_vect) {
 	}
 
 	if (AA_BUTTON) {
-		restart = TRUE;
+		FRAM_Write(score);
+		
+		randomNum = rand() % 7;
+		drawArrow(randomNum);
+
+		timer = 9;
+		drawTimer(timer);
+
+		eraseScore();
+		score = 0;
+		drawScore(score);
+		drawLastScore(FRAM_Read());
+		
+		start = TRUE;
+		restart = FALSE;
+		TCNT1 = 57723;
 	}
 
 	if (BB_BUTTON) {
@@ -660,7 +676,9 @@ int main(void) {
 	LCD_Clean();
 	// LCD_Ready();
 	PWM_Init();
-	interruptInit();
+	buttonInterruptInit();
+	timerInterruptInit();
+	sei();	// set global interrupt enable
 	analogReadInit();
 	lowLED_Init();
 	FRAM_Init();
@@ -704,23 +722,7 @@ int main(void) {
 		The screen shows 1.x V
 	*/
 		
-		if (restart) {
-			FRAM_Write(score);
-			
-			randomNum = rand() % 7;
-			drawArrow(randomNum);
-
-			timer = 9;
-			drawTimer(timer);
-
-			eraseScore();
-			score = 0;
-			drawScore(score);
-			drawLastScore(FRAM_Read());
-			
-			start = TRUE;
-			restart = FALSE;
-		}
+		delay(100);
 	}
 
 	return(TRUE);
