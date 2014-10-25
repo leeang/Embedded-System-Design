@@ -134,6 +134,7 @@ void timerInterruptInit(void) {
 	Bit 2:0 - CS12:0: Clock Select
 		101	clkI/O/1024 (From prescaler)
 */
+	TCNT1 = 57723;
 }
 /* --------- /Interrupt --------- */
 
