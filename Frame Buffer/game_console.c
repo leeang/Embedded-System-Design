@@ -23,6 +23,8 @@ int currentColumn = COLUMN;
 byte currentPage, currentPixel, currentRegister;
 byte keepPixel = FALSE;
 
+byte luminance = BOTTOM;
+
 
 /* --------- Initialization --------- --------- */
 void pinInit(void) {
@@ -527,6 +529,11 @@ ISR(INT2_vect) {
 
 	if (AA_BUTTON) {
 		keepPixel = ~keepPixel;
+	}
+
+	if (BB_BUTTON) {
+		luminance += 51;
+		OCR0 = luminance;
 	}
 
 	_delay_ms(32);

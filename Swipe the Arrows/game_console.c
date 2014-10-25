@@ -657,7 +657,7 @@ ISR(INT2_vect) {
 	}
 
 	if (BB_BUTTON) {
-		luminance += 50;
+		luminance += 51;
 		OCR0 = luminance;
 	}
 
