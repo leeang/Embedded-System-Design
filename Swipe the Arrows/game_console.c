@@ -73,7 +73,6 @@ void pinInit(void) {
 }
 
 void interruptInit(void) {
-	sei();	// set global interrupt enable
 	GICR = _BV(INT2);
 /*
 	Page 48
@@ -106,6 +105,24 @@ void interruptInit(void) {
 	Bit 1, 0 - ISC01, ISC00: Interrupt Sense Control 0 Bit 1 and Bit 0
 		11	The rising edge of INT0 generates an interrupt request.
 */
+
+	TIMSK = _BV(TOIE1);
+/*
+	Page 115
+	Timer/Counter Interrupt Mask Register - TIMSK
+	
+	Bit 2 - TOIE1: Timer/Counter1, Overflow Interrupt Enable
+	When this bit is written to one, and the I-flag in the Status Register is set (interrupts globally enabled), the Timer/Counter1 Overflow Interrupt is enabled. The corresponding Interrupt Vector is executed when the TOV1 Flag, located in TIFR, is set.
+*/
+	TCCR1B = _BV(CS12) | _BV(CS10);
+/*
+	Page 113
+	Timer/Counter1 Control Register B - TCCR1B
+
+	Bit 2:0 - CS12:0: Clock Select
+		101	clkI/O/1024 (From prescaler)
+*/
+	sei();	// set global interrupt enable
 }
 
 void lowLED_Init(void) {
@@ -620,6 +637,9 @@ ISR(INT2_vect) {
 	}
 
 	_delay_ms(32);
+}
+ISR(TIMER1_OVF_vect) {
+	
 }
 /* --------- /Interrupt Service Routine --------- */
 
