@@ -168,7 +168,7 @@ unsigned int analogRead(void) {
 	// ADC Start Conversion, Prescaler Select
 	while( ADCSRA & _BV(ADSC) );
 	// determine the end of conversion
-	return(ADC);
+	return ADC;
 }
 /* --------- /ADC --------- */
 
@@ -229,7 +229,7 @@ void LCD_Tx(char cd, char cData) {
 	CSLCD_STATE(DESELECT);
 }
 
-byte LCD_Init(void) {
+void LCD_Init(void) {
 	resetLCD();
 /*
 	UC1701x Page 12 ~ Page 17
@@ -277,26 +277,22 @@ byte LCD_Init(void) {
 
 	LCD_Tx(COMMAND, 0b10101111);
 	// 12. Set Display Enable
-
-	return(TRUE);
 }
 
-byte selectPage(byte page) {
+void selectPage(byte page) {
 	byte pageAddress = (CMD_PAGE | page);
 	LCD_Tx(COMMAND, pageAddress);
-	return(TRUE);
 }
 
-byte selectColumn(byte column) {
+void selectColumn(byte column) {
 	column += 30;
 	byte colAddressLSB = (CMD_COL_LSB | (column & 0x0F));
 	byte colAddressMSB = (CMD_COL_MSB | (column >> 4));
 	LCD_Tx(COMMAND, colAddressLSB);
 	LCD_Tx(COMMAND, colAddressMSB);
-	return(TRUE);
 }
 
-byte LCD_Clean(void) {
+void LCD_Clean(void) {
 	byte page;
 	for (page=0; page<MAX_PAGE; page++) {
 
@@ -311,14 +307,12 @@ byte LCD_Clean(void) {
 		}
 
 	}
-	return(TRUE);
 }
 
-byte LCD_Ready(void) {
+void LCD_Ready(void) {
 	selectPage(7);
 	selectColumn(30);
 	LCD_Tx(DATA, 0b00000001);
-	return(TRUE);
 }
 /* --------- /LCD --------- */
 
@@ -733,5 +727,5 @@ int main(void) {
 		delay(100);
 	}
 
-	return(TRUE);
+	return TRUE;
 }
