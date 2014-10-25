@@ -280,19 +280,19 @@ void LCD_Init(void) {
 }
 
 void selectPage(byte page) {
-	byte pageAddress = (CMD_PAGE | page);
+	byte pageAddress = (PAGE_MASK | (page & 0x0F));
 	LCD_Tx(COMMAND, pageAddress);
 }
 
 void selectColumn(byte column) {
 	column += 30;
-	byte colAddressLSB = (CMD_COL_LSB | (column & 0x0F));
-	byte colAddressMSB = (CMD_COL_MSB | (column >> 4));
+	byte colAddressLSB = (COL_LSB_MASK | (column & 0x0F));
+	byte colAddressMSB = (COL_MSB_MASK | (column >> 4));
 	LCD_Tx(COMMAND, colAddressLSB);
 	LCD_Tx(COMMAND, colAddressMSB);
 }
 
-void LCD_Clean(void) {
+void LCD_Clear(void) {
 	byte page;
 	for (page=0; page<MAX_PAGE; page++) {
 
@@ -302,7 +302,7 @@ void LCD_Clean(void) {
 		for (column=0; column<MAX_COLUMN; column++) {
 
 			selectColumn(column);
-			LCD_Tx(DATA, LCD_CLEAN);
+			LCD_Tx(DATA, LCD_CLEAR);
 
 		}
 
@@ -587,7 +587,7 @@ void eraseScore() {
 	selectPage(0);
 	for (i=0; i<40; i++) {
 		selectColumn(i+56);
-		LCD_Tx(DATA, LCD_CLEAN);
+		LCD_Tx(DATA, LCD_CLEAR);
 	}
 }
 /* --------- /Draw --------- */
@@ -676,7 +676,7 @@ int main(void) {
 	SPI_MasterInit();
 	LCD_Init();
 	_delay_ms(32);
-	LCD_Clean();
+	LCD_Clear();
 	PWM_Init();
 	analogReadInit();
 	lowLED_Init();

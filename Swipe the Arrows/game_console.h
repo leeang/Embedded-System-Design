@@ -11,7 +11,7 @@ Github:			https://github.com/leeang/Embedded-System-Design
 #include <avr/interrupt.h>
 #include <stdlib.h>
 
-#define byte unsigned char 
+#define byte		unsigned char
 // typedef unsigned char byte;
 
 #define F_CPU		8000000UL
@@ -29,27 +29,21 @@ Github:			https://github.com/leeang/Embedded-System-Design
 #define OUT			0xFF
 #define IN			0x00
 
+#define DESELECT	0xFF
+#define SELECT		0x00
+
 #define DATA		0xFF
 #define COMMAND		0x00
 
-#define SELECT		0x00
-#define DESELECT	0xFF
-
-// ADC
-#define Varef		2.56
-#define BAT_MIN		1.2
-
 // LCD
 #define MAX_PAGE		8
-#define LCD_CLEAN		0x00
 #define MAX_COLUMN		102
-#define CMD_PAGE		0b10110000
-#define CMD_COL_LSB		0b00000000
-#define CMD_COL_MSB		0b00010000
+#define PAGE_MASK		0b10110000
+#define COL_LSB_MASK	0b00000000
+#define COL_MSB_MASK	0b00010000
+#define LCD_CLEAR		0x00
 #define ROW				32
 #define COLUMN			51
-#define PIXEL			0b10000000
-#define PAGE			4
 
 // FRAM
 #define WREN			0b00000110
@@ -58,7 +52,6 @@ Github:			https://github.com/leeang/Embedded-System-Design
 
 // PWM
 #define BOTTOM			0x00
-#define TOP				0xFF
 
 
 /* --------- Write and Read --------- */
