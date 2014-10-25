@@ -349,7 +349,7 @@ byte FRAM_Read(void) {
 /* --------- PWM --------- --------- */
 void PWM_Init(void) {
 	PWM_DIR(OUT);
-	TCCR0 = _BV(WGM00) | _BV(COM01) | _BV(COM00) | _BV(WGM01) | _BV(CS00);
+	TCCR0 = _BV(WGM00) | _BV(COM01) | _BV(COM00) | _BV(WGM01) | _BV(CS01);
 /*
 	Fast PWM, Set OC0 on compare match, clear OC0 at BOTTOM, clkI/O/8
 
@@ -361,8 +361,9 @@ void PWM_Init(void) {
 
 	Bit 5:4 - COM01:0: Compare Match Output Mode
 		When the WGM01:0 bits are set to fast PWM mode.
-		11	Set OC0 on compare match, clear OC0 at BOTTOM
+		11	Set OC0 on compare match, clear OC0 at BOTTOM. (inverting mode)
 				OC0, Output Compare Match output: The PB3 pin can serve as an external output for the Timer/Counter0 Compare Match. The PB3 pin has to be configured as an output (DDB3 set (one)) to serve this function. The OC0 pin is also the output pin for the PWM mode timer function.
+
 	Bit 2:0 - CS02:0: Clock Select
 		010	clkI/O/8 (From prescaler)
 */
