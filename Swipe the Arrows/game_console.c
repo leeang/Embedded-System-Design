@@ -71,6 +71,17 @@ void pinInit(void) {
 	SS_STATE(HIGH);
 }
 
+void lowLED_Init(void) {
+	LOW_LED_STATE(OFF);
+	// Make sure it is off before changing direction
+	_delay_ms(10);
+	LOW_LED_DIR(OUT);
+	// Set BATTERY LED I/Os as outputs.
+}
+/* --------- /Initialization --------- */
+
+
+/* --------- Interrupt --------- --------- */
 void buttonInterruptInit(void) {
 	GICR = _BV(INT2);
 /*
@@ -124,15 +135,7 @@ void timerInterruptInit(void) {
 		101	clkI/O/1024 (From prescaler)
 */
 }
-
-void lowLED_Init(void) {
-	LOW_LED_STATE(OFF);
-	// Make sure it is off before changing direction
-	_delay_ms(10);
-	LOW_LED_DIR(OUT);
-	// Set BATTERY LED I/Os as outputs.
-}
-/* --------- /Initialization --------- */
+/* --------- /Interrupt --------- */
 
 
 /* --------- ADC --------- --------- */
@@ -335,6 +338,7 @@ void FRAM_Init(void) {
 	HOLDFM_STATE(HIGH);
 	// When /HOLD is low, the current operation is suspended.
 }
+
 void FRAM_Write(byte bData) {
 	CSFM_STATE(SELECT);
 	SPI_MasterTransmit(WREN);	// Set Write Enable Latch
@@ -469,6 +473,7 @@ byte USART_Tx(byte data) {
 	/* Put data into buffer, sends the data */
 	return TRUE;
 }
+
 void USART_TxString(char *s) {
 	while (*s) {
 		USART_Tx(*s);
@@ -522,6 +527,7 @@ void drawBattery(int batteryLevel) {
 		LCD_Tx(DATA, numArray[batteryLevel][i]);
 	}
 }
+
 void drawArrow(int randomNum) {
 	selectPage(3);
 	int i;
@@ -530,6 +536,7 @@ void drawArrow(int randomNum) {
 		LCD_Tx(DATA, iconArray[randomNum][i]);
 	}
 }
+
 void drawTimer(int timer) {
 	selectPage(0);
 	int i;
@@ -538,6 +545,7 @@ void drawTimer(int timer) {
 		LCD_Tx(DATA, numArray[timer][i]);
 	}
 }
+
 void drawScore(byte score) {
 	selectPage(0);
 	int i;
@@ -558,6 +566,7 @@ void drawScore(byte score) {
 		}
 	}
 }
+
 void drawLastScore(byte score) {
 	selectPage(0);
 	int i;
@@ -578,6 +587,7 @@ void drawLastScore(byte score) {
 		}
 	}
 }
+
 void eraseScore() {
 	int i;
 	selectPage(0);
@@ -652,6 +662,7 @@ ISR(INT2_vect) {
 
 	_delay_ms(32);
 }
+
 ISR(TIMER1_OVF_vect) {
 	if (start) {
 		timer--;
