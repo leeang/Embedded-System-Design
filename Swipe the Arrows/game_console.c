@@ -82,9 +82,9 @@ void interruptInit(void) {
 	Bit 6 - INT0: External Interrupt Request 0 Enable
 	Bit 5 - INT2: External Interrupt Request 2 Enable
 	
-	INT2 - Port B, Bit 2, PB2: External Interrupt Source 2
-	INT1 - Port D, Bit 3, PD3: External Interrupt Source 1
-	INT0 - Port D, Bit 2, PD2: External Interrupt Source 0
+	PB2 INT2 (External Interrupt 2 Input)
+	PD3 INT1 (External Interrupt 1 Input)
+	PD2 INT0 (External Interrupt 0 Input)
 */
 	MCUCSR = _BV(ISC2);
 /*
@@ -373,6 +373,13 @@ void PWM_Init(void) {
 	Output Compare Register - OCR0
 	The Output Compare Register contains an 8-bit value that is continuously compared with the counter value (TCNT0). A match can be used to generate an output compare interrupt, or to generate a waveform output on the OC0 pin.
 	BOTTOM	The counter reaches the BOTTOM when it becomes 0x00.
+*/
+
+/*
+	PB3 OC0		(Timer/Counter0 OutputCompare Match Output)
+	PD7 OC2		(Timer/Counter2 Output Compare Match Output)
+	PD5 OC1A	(Timer/Counter1 Output Compare A Match Output)
+	PD4 OC1B	(Timer/Counter1 Output Compare B Match Output)
 */
 }
 /* --------- /PWM --------- */
