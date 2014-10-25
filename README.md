@@ -1,21 +1,21 @@
 ##ELEN90066 Embedded System Design
 
 ###"Swipe the Arrows" folder has following functions:
-* button  
+* Button  
 * PWM  
 * LCD  
-* interrupt (button)  
-* analog-to-digital conversion  
-* low power LED  
+* Interrupt (button & timer)  
+* Analog-to-digital conversion  
+* Low power LED  
 * FRAM  
-* game (swipe the arrows)  
+* Game (swipe the arrows)  
 * USART Transmit (char & string)  
 
 ###"Frame buffer" folder has following functions:
-* button  
+* Button  
 * PWM  
 * LCD  
-* interrupt (button)  
-* frame buffer  
-* game (draw picture)  
+* Interrupt (button)  
+* Frame buffer  
+* Game (draw picture)  
 * USART Transmit (char & string)  
