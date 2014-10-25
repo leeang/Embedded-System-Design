@@ -639,7 +639,16 @@ ISR(INT2_vect) {
 	_delay_ms(32);
 }
 ISR(TIMER1_OVF_vect) {
-	
+	if (start) {
+		timer--;
+		drawTimer(timer);
+		if (timer==0) {
+			FRAM_Write(score);
+			drawArrow(9);
+			start = FALSE;
+		}
+	}
+	TCNT1 = 57723;
 }
 /* --------- /Interrupt Service Routine --------- */
 
@@ -690,6 +699,10 @@ int main(void) {
 			drawBattery(batteryLevel);
 			batteryLevel < 2 ? (LOW_LED_STATE(ON)) : (LOW_LED_STATE(OFF));
 		}
+	/*
+		0.1V * 1023 / 3.3V = 31
+		The screen shows 1.x V
+	*/
 		
 		if (restart) {
 			FRAM_Write(score);
@@ -707,18 +720,6 @@ int main(void) {
 			
 			start = TRUE;
 			restart = FALSE;
-		} else {
-			delay(1000);
-
-			if (start) {
-				timer--;
-				drawTimer(timer);
-				if (timer==0) {
-					FRAM_Write(score);
-					drawArrow(9);
-					start = FALSE;
-				}
-			}
 		}
 	}
 
