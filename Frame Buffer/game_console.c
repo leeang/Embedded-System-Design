@@ -17,40 +17,11 @@ Github:			https://github.com/leeang/Embedded-System-Design
 #include <util/delay.h>
 
 
-int timer = 9;
-int randomNum;
-byte start = TRUE;
-byte score = 0;
-byte luminance = BOTTOM;
-
-
-byte numArray[10][8] = {
-	{0x00,0x7C,0xC3,0x81,0x81,0xC3,0x3E,0x00},	/*"0",0*/
-	{0x00,0x00,0x82,0x81,0xFF,0x80,0x80,0x00},	/*"1",1*/
-	{0x00,0x80,0xC2,0xA1,0xA1,0x91,0x8E,0x00},	/*"2",2*/
-	{0x00,0x42,0x89,0x89,0x89,0x76,0x00,0x00},	/*"3",3*/
-	{0x20,0x30,0x2C,0x26,0x23,0xFF,0x20,0x00},	/*"4",4*/
-	{0x00,0x00,0x4F,0x89,0x89,0x89,0x71,0x00},	/*"5",5*/
-	{0x00,0x7C,0xD2,0x89,0x89,0x89,0x70,0x00},	/*"6",6*/
-	{0x00,0x01,0x81,0x71,0x1D,0x07,0x01,0x00},	/*"7",7*/
-	{0x00,0x66,0x99,0x89,0x89,0x99,0x66,0x00},	/*"8",8*/
-	{0x00,0x0E,0x91,0x91,0x91,0x53,0x3E,0x00},	/*"9",9*/
-};
-
-byte iconArray[12][8] = {
-	{0b00001000, 0b00001100, 0b11111010, 0b10001001, 0b10001001, 0b11111010, 0b00001100, 0b00001000},	// 0	Up Empty
-	{0b00001000, 0b00001100, 0b11111110, 0b11111111, 0b11111111, 0b11111110, 0b00001100, 0b00001000},	// 1	Up Full
-	{0b00111100, 0b00100100, 0b00100100, 0b00100100, 0b11111111, 0b01000010, 0b00100100, 0b00011000},	// 2	Right Empty
-	{0b00111100, 0b00111100, 0b00111100, 0b00111100, 0b11111111, 0b01111110, 0b00111100, 0b00011000},	// 3	Right Full
-	{0b00010000, 0b00110000, 0b01011111, 0b10010001, 0b10010001, 0b01011111, 0b00110000, 0b00010000},	// 4	Down Empty
-	{0b00010000, 0b00110000, 0b01111111, 0b11111111, 0b11111111, 0b01111111, 0b00110000, 0b00010000},	// 5	Down Full
-	{0b00011000, 0b00100100, 0b01000010, 0b11111111, 0b00100100, 0b00100100, 0b00100100, 0b00111100},	// 6	Left Empty
-	{0b00011000, 0b00111100, 0b01111110, 0b11111111, 0b00111100, 0b00111100, 0b00111100, 0b00111100},	// 7	Left Full
-	{0b10000001, 0b01000010, 0b00100100, 0b00011000, 0b00011000, 0b00100100, 0b01000010, 0b10000001},	// 8	Wrong
-	{0b00111100, 0b01000010, 0b10000001, 0b10011111, 0b10010001, 0b10010001, 0b01010010, 0b00111100},	// 9	Clock
-	{0b11111010, 0b10001111, 0b10001010, 0b10001000, 0b10001000, 0b10001010, 0b10001010, 0b11111010},	// 10	Battery
-	{0b00000000, 0b00000000, 0b00000000, 0b11000000, 0b11000000, 0b00000000, 0b00000000, 0b00000000},	// 11	Decimal mark
-};
+byte frameBuffer[MAX_COLUMN][MAX_PAGE];
+int currentRow = ROW;
+int currentColumn = COLUMN;
+byte currentPage, currentPixel, currentRegister;
+byte keepPixel = FALSE;
 
 
 /* --------- Initialization --------- --------- */
@@ -507,174 +478,58 @@ int constrain(int x, int a, int b) {
 	return x;
 }
 
-/* --------- Draw --------- --------- */
-void drawBattery(int batteryLevel) {
-	selectPage(7);
-	int i;
-	for (i = 0; i < 8; i++)	{
-		selectColumn(i);
-		LCD_Tx(DATA, iconArray[10][i]);
-	}
-	for (i = 0; i < 8; i++)	{
-		selectColumn(i+8);
-		LCD_Tx(DATA, numArray[1][i]);
-	}
-	for (i = 0; i < 8; i++)	{
-		selectColumn(i+16);
-		LCD_Tx(DATA, iconArray[11][i]);
-	}
-	for (i = 0; i < 8; i++)	{
-		selectColumn(i+24);
-		LCD_Tx(DATA, numArray[batteryLevel][i]);
-	}
-}
-
-void drawArrow(int randomNum) {
-	selectPage(3);
-	int i;
-	for (i = 0; i < 8; i++)	{
-		selectColumn(i+48);
-		LCD_Tx(DATA, iconArray[randomNum][i]);
-	}
-}
-
-void drawTimer(int timer) {
-	selectPage(0);
-	int i;
-	for (i = 0; i < 8; i++)	{
-		selectColumn(i+16);
-		LCD_Tx(DATA, numArray[timer][i]);
-	}
-}
-
-void drawScore(byte score) {
-	selectPage(0);
-	int i;
-
-	if (score<10) {
-		for (i=0; i<8; i++) {
-			selectColumn(i+56);
-			LCD_Tx(DATA, numArray[score][i]);
-		}
-	} else {
-		for (i=0; i<8; i++) {
-			selectColumn(i+56);
-			LCD_Tx(DATA, numArray[score / 10][i]);
-		}
-		for (i=0; i<8; i++) {
-			selectColumn(i+64);
-			LCD_Tx(DATA, numArray[score % 10][i]);
-		}
-	}
-}
-
-void drawLastScore(byte score) {
-	selectPage(0);
-	int i;
-
-	if (score<10) {
-		for (i=0; i<8; i++) {
-			selectColumn(i+80);
-			LCD_Tx(DATA, numArray[score][i]);
-		}
-	} else {
-		for (i=0; i<8; i++) {
-			selectColumn(i+80);
-			LCD_Tx(DATA, numArray[score / 10][i]);
-		}
-		for (i=0; i<8; i++) {
-			selectColumn(i+88);
-			LCD_Tx(DATA, numArray[score % 10][i]);
-		}
-	}
-}
-
-void eraseScore() {
-	int i;
-	selectPage(0);
-	for (i=0; i<40; i++) {
-		selectColumn(i+56);
-		LCD_Tx(DATA, LCD_CLEAR);
-	}
-}
-/* --------- /Draw --------- */
-
-
 /* --------- Interrupt Service Routine --------- --------- */
 ISR(INT2_vect) {
-	UP_BUTTON && USART_Tx('U');
-	DN_BUTTON && USART_Tx('D');
-	LT_BUTTON && USART_Tx('L');
-	RT_BUTTON && USART_Tx('R');
-	AA_BUTTON && USART_Tx('A');
-	BB_BUTTON && USART_Tx('B');
-	// Short-circuit evaluation
+	char columnChange = 0;
+	char pageChange = 0;
 	
-	if (start && (UP_BUTTON || RT_BUTTON || DN_BUTTON || LT_BUTTON)) {
-		if (UP_BUTTON && (randomNum==1 || randomNum==4)) {
-			randomNum = rand() % 7;
-			drawArrow(randomNum);
-			score++;
-			drawScore(score);
-		} else if (RT_BUTTON && (randomNum==3 || randomNum==6)) {
-			randomNum = rand() % 7;
-			drawArrow(randomNum);
-			score++;
-			drawScore(score);
-		} else if (DN_BUTTON && (randomNum==0 || randomNum==5)) {
-			randomNum = rand() % 7;
-			drawArrow(randomNum);
-			score++;
-			drawScore(score);
-		} else if (LT_BUTTON && (randomNum==2 || randomNum==7)) {
-			randomNum = rand() % 7;
-			score++;
-			drawArrow(randomNum);
-			drawScore(score);
-		} else {
-			start = FALSE;
-			drawArrow(8);
-			FRAM_Write(score);
+	if (UP_BUTTON || DN_BUTTON || LT_BUTTON || RT_BUTTON) {
+		if (keepPixel) {
+			frameBuffer[currentColumn][currentPage] = currentRegister;
+		}
+		
+		if (UP_BUTTON) {
+			if (currentRow%8 == 0) {
+				pageChange--;
+			}
+			currentRow--;
+		} else if (DN_BUTTON) {
+			currentRow++;
+			if (currentRow%8 == 0) {
+				pageChange++;
+			}
+		} else if (LT_BUTTON) {
+			currentColumn--;
+			columnChange--;
+		} else if (RT_BUTTON) {
+			currentColumn++;
+			columnChange++;
+		}
+
+		currentColumn =  constrain(currentColumn, 0, MAX_COLUMN - 1);
+		currentRow =  constrain(currentRow, 0, 64 - 1);
+
+		currentPage = currentRow / 8;
+		currentPixel = currentRow % 8;
+
+		currentRegister = _BV(currentPixel) | frameBuffer[currentColumn][currentPage];
+		selectPage(currentPage);
+		selectColumn(currentColumn);
+		LCD_Tx(DATA, currentRegister);
+
+		if (columnChange != 0 || pageChange != 0) {
+			byte changeRegister = frameBuffer[currentColumn-columnChange][currentPage-pageChange];
+			selectPage(currentPage-pageChange);
+			selectColumn(currentColumn-columnChange);
+			LCD_Tx(DATA, changeRegister);
 		}
 	}
 
 	if (AA_BUTTON) {
-		FRAM_Write(score);
-		
-		randomNum = rand() % 7;
-		drawArrow(randomNum);
-
-		timer = 9;
-		drawTimer(timer);
-
-		eraseScore();
-		score = 0;
-		drawScore(score);
-		drawLastScore(FRAM_Read());
-		
-		start = TRUE;
-		TCNT1 = 57723;
-	}
-
-	if (BB_BUTTON) {
-		luminance += 50;
-		OCR0 = luminance;
+		keepPixel = ~keepPixel;
 	}
 
 	_delay_ms(32);
-}
-
-ISR(TIMER1_OVF_vect) {
-	if (start) {
-		timer--;
-		drawTimer(timer);
-		if (timer==0) {
-			FRAM_Write(score);
-			drawArrow(9);
-			start = FALSE;
-		}
-	}
-	TCNT1 = 57723;
 }
 /* --------- /Interrupt Service Routine --------- */
 
@@ -685,53 +540,15 @@ int main(void) {
 	_delay_ms(32);
 	LCD_Clear();
 	PWM_Init();
-	analogReadInit();
-	lowLED_Init();
-	FRAM_Init();
-	USART_Init(51);
-	// for 8Mhz and baud 9600 UBRR = 51
 	buttonInterruptInit();
-	timerInterruptInit();
 	sei();	// set global interrupt enable
 
-	int i;
-	srand(analogRead());
-
-	selectPage(0);
-	for (i=0; i<8; i++)	{
-		selectColumn(i);
-		LCD_Tx(DATA, iconArray[9][i]);
-	}
-	// Draw clock icon
-
-	selectPage(0);
-	for (i=0; i<8; i++)	{
-		selectColumn(i+40);
-		LCD_Tx(DATA, iconArray[1][i]);
-	}
-	// Draw score icon (a arrow)
-	
-	drawTimer(timer);
-	drawScore(score);
-	drawLastScore(FRAM_Read());
-
-	randomNum = rand() % 7;
-	drawArrow(randomNum);
-
+	currentPage = currentRow / 8;
+	currentPixel = currentRow % 8;
+	currentRegister = _BV(currentPixel);
 
 	while (TRUE) {
-		int batteryLevel = analogRead() - 310;
-		if (batteryLevel > 0) {
-			batteryLevel = batteryLevel / 31;
-			drawBattery(batteryLevel);
-			batteryLevel < 2 ? (LOW_LED_STATE(ON)) : (LOW_LED_STATE(OFF));
-		}
-	/*
-		0.1V * 1023 / 3.3V = 31
-		The screen shows 1.x V
-	*/
 		
-		delay(100);
 	}
 
 	return TRUE;
