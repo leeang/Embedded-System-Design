@@ -73,8 +73,8 @@ void pinInit(void) {
 	BB_PULL_UP(TRUE);
 	BB_BUTTON_DIR(IN);
 
-	SS_DIR(OUT);
 	SS_STATE(HIGH);
+	SS_DIR(OUT);
 }
 /* --------- /Pin --------- */
 
@@ -206,9 +206,24 @@ void SPI_MasterInit(void) {
 
 void SPI_MasterTransmit(char cData) {
 	SPDR = cData;
-	// Start transmission
+/*
+	Start transmission
+
+	Page 142
+	SPI Data Register - SPDR
+
+	The SPI Data Register is a read/write register used for data transfer between the Register File and the SPI Shift Register. Writing to the register initiates data transmission. Reading the register causes the Shift Register Receive buffer to be read.
+*/
 	while(!( SPSR & _BV(SPIF) ));
-	// Wait for transmission complete
+/*
+	Wait for transmission complete
+
+	Page 142
+	SPI Status Register - SPSR
+
+	Bit 7 - SPIF: SPI Interrupt Flag
+		When a serial transfer is complete, the SPIF Flag is set. An interrupt is generated if SPIE in SPCR is set and global interrupts are enabled. If SSis an input and is driven low when the SPI is in Master mode, this will also set the SPIF Flag. SPIF is cleared by hardware when executing the corresponding interrupt handling vector. Alternatively, the SPIF bit is cleared by first reading the SPI Status Register with SPIF set, then accessing the SPI Data Register (SPDR).
+*/
 }
 /* --------- /SPI --------- */
 
@@ -225,18 +240,18 @@ void resetLCD(void) {
 }
 
 void LCD_Tx(char cd, char cData) {
-	CDLCD_DIR(OUT);
 	CDLCD_STATE(cd);	// Low: COMMAND; High: DATA;
-
-	CSLCD_DIR(OUT);
 	CSLCD_STATE(SELECT);
-
 	SPI_MasterTransmit(cData);
-
 	CSLCD_STATE(DESELECT);
 }
 
 void LCD_Init(void) {
+	CDLCD_DIR(OUT);
+
+	CSLCD_STATE(DESELECT);
+	CSLCD_DIR(OUT);
+
 	resetLCD();
 /*
 	UC1701x Page 12 ~ Page 17
@@ -328,15 +343,15 @@ void LCD_Ready(void) {
 void FRAM_Init(void) {
 	MISO_DIR(IN);
 
-	CSFM_DIR(OUT);
 	CSFM_STATE(DESELECT);
+	CSFM_DIR(OUT);
 
-	WPFM_DIR(OUT);
 	WPFM_STATE(HIGH);
+	WPFM_DIR(OUT);
 	// This active low pin prevents write operations to the memory array or the status register.
 
-	HOLDFM_DIR(OUT);
 	HOLDFM_STATE(HIGH);
+	HOLDFM_DIR(OUT);
 	// When /HOLD is low, the current operation is suspended.
 }
 
