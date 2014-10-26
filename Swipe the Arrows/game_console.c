@@ -383,8 +383,7 @@ void PWM_Init(void) {
 
 	Bit 5:4 - COM01:0: Compare Match Output Mode
 		When the WGM01:0 bits are set to fast PWM mode.
-		11	Set OC0 on compare match, clear OC0 at BOTTOM. (inverting mode)
-				OC0, Output Compare Match output: The PB3 pin can serve as an external output for the Timer/Counter0 Compare Match. The PB3 pin has to be configured as an output (DDB3 set (one)) to serve this function. The OC0 pin is also the output pin for the PWM mode timer function.
+		10	Clear OC0 on compare match, set OC0 at BOTTOM. (non-inverting mode)
 
 	Bit 2:0 - CS02:0: Clock Select
 		010	clkI/O/8 (From prescaler)
@@ -393,11 +392,15 @@ void PWM_Init(void) {
 /*
 	Page 85
 	Output Compare Register - OCR0
+
 	The Output Compare Register contains an 8-bit value that is continuously compared with the counter value (TCNT0). A match can be used to generate an output compare interrupt, or to generate a waveform output on the OC0 pin.
-	BOTTOM	The counter reaches the BOTTOM when it becomes 0x00.
+
+	A special case occurs when OCR0 equals TOP and COM01 is set. In this case, the compare match is ignored, but the set or clear is done at TOP.
 */
 
 /*
+	OC0, Output Compare Match output: The PB3 pin can serve as an external output for the Timer/Counter0 Compare Match. The PB3 pin has to be configured as an output (DDB3 set (one)) to serve this function. The OC0 pin is also the output pin for the PWM mode timer function.
+
 	PB3 OC0		(Timer/Counter0 OutputCompare Match Output)
 	PD7 OC2		(Timer/Counter2 Output Compare Match Output)
 	PD5 OC1A	(Timer/Counter1 Output Compare A Match Output)
