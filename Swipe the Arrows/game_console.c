@@ -383,7 +383,7 @@ void PWM_Init(void) {
 
 	Bit 5:4 - COM01:0: Compare Match Output Mode
 		When the WGM01:0 bits are set to fast PWM mode.
-		10	Clear OC0 on compare match, set OC0 at BOTTOM. (non-inverting mode)
+		11	Set OC0 on compare match, clear OC0 at BOTTOM. (inverting mode)
 
 	Bit 2:0 - CS02:0: Clock Select
 		010	clkI/O/8 (From prescaler)
@@ -396,6 +396,8 @@ void PWM_Init(void) {
 	The Output Compare Register contains an 8-bit value that is continuously compared with the counter value (TCNT0). A match can be used to generate an output compare interrupt, or to generate a waveform output on the OC0 pin.
 
 	A special case occurs when OCR0 equals TOP and COM01 is set. In this case, the compare match is ignored, but the set or clear is done at TOP.
+
+	The extreme values for the OCR0 Register represents special cases when generating a PWM waveform output in the fast PWM mode. If the OCR0 is set equal to BOTTOM, the output will be a narrow spike for each MAX+1 timer clock cycle. Setting the OCR0equal to MAX will result in a constantly high or low output (depending on the polarity of the output set by the COM01:0 bits.)
 */
 
 /*
@@ -406,6 +408,11 @@ void PWM_Init(void) {
 	PD5 OC1A	(Timer/Counter1 Output Compare A Match Output)
 	PD4 OC1B	(Timer/Counter1 Output Compare B Match Output)
 */
+}
+
+void changeLuminance(void) {
+	luminance == MAX ? (luminance = BOTTOM) : (luminance += 51);
+	OCR0 = luminance;
 }
 /* --------- /PWM --------- */
 
@@ -660,8 +667,7 @@ ISR(INT2_vect) {
 	}
 
 	if (BB_BUTTON) {
-		luminance += 51;
-		OCR0 = luminance;
+		changeLuminance();
 	}
 
 	_delay_ms(32);

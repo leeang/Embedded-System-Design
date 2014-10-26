@@ -42,7 +42,7 @@ Github:			https://github.com/leeang/Embedded-System-Design
 #define COMMAND		0x00
 
 // PWM
-#define TOP			0xFF
+#define MAX			0xFF
 #define BOTTOM		0x00
 
 // LCD
