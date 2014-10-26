@@ -41,6 +41,10 @@ Github:			https://github.com/leeang/Embedded-System-Design
 #define DATA		0xFF
 #define COMMAND		0x00
 
+// PWM
+#define TOP			0xFF
+#define BOTTOM		0x00
+
 // LCD
 #define MAX_PAGE		8
 #define MAX_COLUMN		102
@@ -55,9 +59,6 @@ Github:			https://github.com/leeang/Embedded-System-Design
 #define WREN			0b00000110
 #define WRITEFM			0b00000010
 #define READFM			0b00000011
-
-// PWM
-#define BOTTOM			0x00
 
 
 /* --------- Write and Read --------- */
@@ -106,18 +107,18 @@ Github:			https://github.com/leeang/Embedded-System-Design
 
 
 /* --------- Inputs --------- */
-#define UP_BUTTON		~READ(PINA, _BV(PA2))
-#define LT_BUTTON		~READ(PINA, _BV(PA3))
-#define DN_BUTTON		~READ(PINA, _BV(PA4))
-#define RT_BUTTON		~READ(PINA, _BV(PA5))
-#define BB_BUTTON		~READ(PINA, _BV(PA6))
-#define AA_BUTTON		~READ(PINA, _BV(PA7))
+#define UP_BUTTON				~READ(PINA, _BV(PA2))
+#define LT_BUTTON				~READ(PINA, _BV(PA3))
+#define DN_BUTTON				~READ(PINA, _BV(PA4))
+#define RT_BUTTON				~READ(PINA, _BV(PA5))
+#define BB_BUTTON				~READ(PINA, _BV(PA6))
+#define AA_BUTTON				~READ(PINA, _BV(PA7))
 
 
 /* --------- Pull-up --------- */
-#define UP_PULL_UP		WRITE(PORTA, _BV(PA2), HIGH)
-#define LT_PULL_UP		WRITE(PORTA, _BV(PA3), HIGH)
-#define DN_PULL_UP		WRITE(PORTA, _BV(PA4), HIGH)
-#define RT_PULL_UP		WRITE(PORTA, _BV(PA5), HIGH)
-#define BB_PULL_UP		WRITE(PORTA, _BV(PA6), HIGH)
-#define AA_PULL_UP		WRITE(PORTA, _BV(PA7), HIGH)
+#define UP_PULL_UP(STATE)		WRITE(PORTA, _BV(PA2), STATE)
+#define LT_PULL_UP(STATE)		WRITE(PORTA, _BV(PA3), STATE)
+#define DN_PULL_UP(STATE)		WRITE(PORTA, _BV(PA4), STATE)
+#define RT_PULL_UP(STATE)		WRITE(PORTA, _BV(PA5), STATE)
+#define BB_PULL_UP(STATE)		WRITE(PORTA, _BV(PA6), STATE)
+#define AA_PULL_UP(STATE)		WRITE(PORTA, _BV(PA7), STATE)

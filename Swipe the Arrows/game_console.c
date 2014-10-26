@@ -55,23 +55,23 @@ byte iconArray[12][8] = {
 
 /* --------- Initialization --------- --------- */
 void pinInit(void) {
+	UP_PULL_UP(TRUE);
 	UP_BUTTON_DIR(IN);
-	UP_PULL_UP;
 
+	DN_PULL_UP(TRUE);
 	DN_BUTTON_DIR(IN);
-	DN_PULL_UP;
 
+	LT_PULL_UP(TRUE);
 	LT_BUTTON_DIR(IN);
-	LT_PULL_UP;
 
+	RT_PULL_UP(TRUE);
 	RT_BUTTON_DIR(IN);
-	RT_PULL_UP;
 
+	AA_PULL_UP(TRUE);
 	AA_BUTTON_DIR(IN);
-	AA_PULL_UP;
 
+	BB_PULL_UP(TRUE);
 	BB_BUTTON_DIR(IN);
-	BB_PULL_UP;
 
 	SS_DIR(OUT);
 	SS_STATE(HIGH);
