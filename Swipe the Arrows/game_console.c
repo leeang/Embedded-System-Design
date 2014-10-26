@@ -53,7 +53,7 @@ byte iconArray[12][8] = {
 };
 
 
-/* --------- Initialization --------- --------- */
+/* --------- Pin --------- --------- */
 void pinInit(void) {
 	UP_PULL_UP(TRUE);
 	UP_BUTTON_DIR(IN);
@@ -76,15 +76,7 @@ void pinInit(void) {
 	SS_DIR(OUT);
 	SS_STATE(HIGH);
 }
-
-void lowLED_Init(void) {
-	LOW_LED_STATE(OFF);
-	// Make sure it is off before changing direction
-	_delay_ms(10);
-	LOW_LED_DIR(OUT);
-	// Set BATTERY LED I/Os as outputs.
-}
-/* --------- /Initialization --------- */
+/* --------- /Pin --------- */
 
 
 /* --------- Interrupt --------- --------- */
@@ -176,6 +168,14 @@ unsigned int analogRead(void) {
 	while( ADCSRA & _BV(ADSC) );
 	// determine the end of conversion
 	return ADC;
+}
+
+void lowLED_Init(void) {
+	LOW_LED_STATE(OFF);
+	// Make sure it is off before changing direction
+	_delay_ms(10);
+	LOW_LED_DIR(OUT);
+	// Set BATTERY LED I/Os as outputs.
 }
 /* --------- /ADC --------- */
 
@@ -384,6 +384,7 @@ void PWM_Init(void) {
 	Bit 5:4 - COM01:0: Compare Match Output Mode
 		When the WGM01:0 bits are set to fast PWM mode.
 		11	Set OC0 on compare match, clear OC0 at BOTTOM. (inverting mode)
+		10	Clear OC0 on compare match, set OC0 at BOTTOM. (non-inverting mode) (cannot output duty cycle == 0)
 
 	Bit 2:0 - CS02:0: Clock Select
 		010	clkI/O/8 (From prescaler)
