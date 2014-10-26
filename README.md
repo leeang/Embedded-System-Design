@@ -18,3 +18,7 @@
 * Interrupt (button)  
 * Frame buffer  
 * Game (draw picture, toggle 'keep pixel' by pressing button A)  
+
+###My Websites:
+[My Blog](http://blog.leeang.com/)
+[FeiTsui Cantonese Lyrics](http://yygeci.com/)
