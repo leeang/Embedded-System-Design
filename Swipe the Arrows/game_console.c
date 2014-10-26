@@ -204,7 +204,7 @@ void SPI_MasterInit(void) {
 */
 }
 
-void SPI_MasterTransmit(char cData) {
+void SPI_MasterTransmit(byte cData) {
 	SPDR = cData;
 /*
 	Start transmission
@@ -239,7 +239,7 @@ void resetLCD(void) {
 	_delay_ms(5);
 }
 
-void LCD_Tx(char cd, char cData) {
+void LCD_Tx(byte cd, byte cData) {
 	CDLCD_STATE(cd);	// Low: COMMAND; High: DATA;
 	CSLCD_STATE(SELECT);
 	SPI_MasterTransmit(cData);
@@ -746,14 +746,15 @@ int main(void) {
 
 	while (TRUE) {
 		int batteryLevel = analogRead() - 310;
-		if (batteryLevel > 0) {
+		if (batteryLevel >= 0 && batteryLevel < 310) {
 			batteryLevel = batteryLevel / 31;
 			drawBattery(batteryLevel);
 			batteryLevel < 2 ? (LOW_LED_STATE(ON)) : (LOW_LED_STATE(OFF));
 		}
 	/*
 		0.1V * 1023 / 3.3V = 31
-		The screen shows 1.x V
+		The screen shows 1.x
+		When batter level < 1.2V, Low LED is ON.
 	*/
 		
 		delay(100);
