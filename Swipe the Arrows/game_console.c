@@ -170,9 +170,22 @@ void analogReadInit(void) {
 
 unsigned int analogRead(void) {
 	ADCSRA |= _BV(ADSC);
-	// ADC Start Conversion, Prescaler Select
+/*
+	ADC Start Conversion, Prescaler Select
+
+	Page 219
+	Bit 6 – ADSC: ADC Start Conversion
+		In Single Conversion mode, write this bit to one to start each conversion.
+*/
 	while( ADCSRA & _BV(ADSC) );
-	// determine the end of conversion
+/*
+	determine the end of conversion
+	
+	Page 219
+	Bit 6 – ADSC: ADC Start Conversion
+		ADSC will read as one as long as a conversion is in progress. When the conversion is complete, it returns to zero. Writing zero to this bit has no effect.
+
+*/
 	return ADC;
 }
 
@@ -190,7 +203,7 @@ void lowLED_Init(void) {
 void SPI_MasterInit(void) {
 	MOSI_DIR(OUT);
 	SCK_DIR(OUT);
-	// Set MOSI and SCK output, all others input
+	// Set MOSI and SCK output
 
 	SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR0);
 /*
