@@ -145,20 +145,26 @@ void analogReadInit(void) {
 	ADC Multiplexer Selection Register - ADMUX
 
 	Bit 7:6 - REFS1:0: Analog Channel and Gain Selection Bits
-		01	
+		01	AVCC with external capacitor at AREF pin
 		11	Internal 2.56V Voltage Reference with external capacitor at AREF pin
 
 	Bit 5 - ADLAR: ADC Left Adjust Result
-		0	
-		1	Write one to ADLAR to left adjust the result
+		The ADLAR bit affects the presentation of the ADC conversion result in the ADC Data Register. Write one to ADLAR to left adjust the result. Otherwise, the result is right adjusted. Changing the ADLAR bit will affect the ADC Data Register immediately, regardless of any ongoing conversions.
 
 	Bits 4:0 - MUX4:0: Single Ended Input
 		00000	ADC0 Channel 0
 */
 	ADCSRA = _BV(ADEN) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0);
 /*
-	ADCSRA	ADC Control and Status Register A
-	ADEN	ADC Enable
+	Page 219
+	ADC Control and Status Register A - ADCSRA
+
+	Bit 7 - ADEN: ADC Enable
+		Writing this bit to one enables the ADC. By writing it to zero, the ADC is turned off. Turning the ADC off while a conversion is in progress, will terminate this conversion.
+
+	Bits 2:0 - ADPS2:0: ADC Prescaler Select Bits
+		These bits determine the division factor between the XTAL frequency and the input clock to the ADC.
+		111	Division Factor: 128
 */
 }
 
