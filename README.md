@@ -2,23 +2,23 @@
 
 ###"Swipe the Arrows" folder has following functions:
 * Button  
-* Backlight with PWM (change luminance by pressing button B)  
+* Backlight with PWM (adjust luminance by pressing button B)  
 * LCD  
 * Interrupt (button & timer)  
 * Analog-to-digital conversion  
 * Low power LED  
 * FRAM  
-* Game (swipe the arrows)  
+* Game (swipe the arrows, restart by pressing button A)  
 * USART Transmit (char & string)  
 
 ###"Frame buffer" folder has following functions:
 * Button  
-* Backlight with PWM (change luminance by pressing button B)  
+* Backlight with PWM (adjust luminance by pressing button B)  
 * LCD  
 * Interrupt (button)  
 * Frame buffer  
 * Game (draw picture, toggle 'keep pixel' by pressing button A)  
 
 ###My Websites:
-[My Blog](http://blog.leeang.com/)
-[FeiTsui Cantonese Lyrics](http://yygeci.com/)
+* [blog.leeang.com](http://blog.leeang.com/)  
+* [FeiTsui Cantonese Lyrics](http://yygeci.com/)  
