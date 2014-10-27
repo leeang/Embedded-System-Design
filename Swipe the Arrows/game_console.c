@@ -223,8 +223,8 @@ void SPI_MasterInit(void) {
 */
 }
 
-void SPI_MasterTransmit(byte cData) {
-	SPDR = cData;
+void SPI_MasterTransmit(byte bdata) {
+	SPDR = bdata;
 /*
 	Start transmission
 
@@ -258,10 +258,10 @@ void resetLCD(void) {
 	_delay_ms(5);
 }
 
-void LCD_Tx(byte cd, byte cData) {
+void LCD_Tx(byte cd, byte bdata) {
 	CDLCD_STATE(cd);	// Low: COMMAND; High: DATA;
 	CSLCD_STATE(SELECT);
-	SPI_MasterTransmit(cData);
+	SPI_MasterTransmit(bdata);
 	CSLCD_STATE(DESELECT);
 }
 
