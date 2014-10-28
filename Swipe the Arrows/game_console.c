@@ -116,15 +116,18 @@ void buttonInterruptInit(void) {
 }
 
 void timerInterruptInit(void) {
-	TIMSK = _BV(TOIE1);
+	TIMSK = _BV(OCIE1A);
 /*
 	Page 115
 	Timer/Counter Interrupt Mask Register - TIMSK
+
+	Bit 4 - OCIE1A: Timer/Counter1, Output Compare A Match Interrupt Enable
+	When this bit is written to one, and the I-flag in the Status Register is set (interrupts globally enabled), the Timer/Counter1 Output Compare A match interrupt is enabled. The corresponding Interrupt Vector is executed when the OCF1A Flag, located in TIFR, is set.
 	
 	Bit 2 - TOIE1: Timer/Counter1, Overflow Interrupt Enable
 	When this bit is written to one, and the I-flag in the Status Register is set (interrupts globally enabled), the Timer/Counter1 Overflow Interrupt is enabled. The corresponding Interrupt Vector is executed when the TOV1 Flag, located in TIFR, is set.
 */
-	TCCR1B = _BV(CS12) | _BV(CS10);
+	TCCR1B = _BV(WGM12) | _BV(CS12) | _BV(CS10);
 /*
 	Page 113
 	Timer/Counter1 Control Register B - TCCR1B
@@ -132,7 +135,8 @@ void timerInterruptInit(void) {
 	Bit 2:0 - CS12:0: Clock Select
 		101	clkI/O/1024 (From prescaler)
 */
-	TCNT1 = 57723;
+	TCNT1 = 0;
+	OCR1A = 7812;
 }
 /* --------- /Interrupt --------- */
 
@@ -698,7 +702,7 @@ ISR(INT2_vect) {
 		drawLastScore(FRAM_Read());
 		
 		start = TRUE;
-		TCNT1 = 57723;
+		TCNT1 = 0;
 	}
 
 	if (BB_BUTTON) {
@@ -708,7 +712,6 @@ ISR(INT2_vect) {
 	_delay_ms(32);
 }
 
-ISR(TIMER1_OVF_vect) {
 ISR(TIMER1_COMPA_vect) {
 	if (start) {
 		timer--;
@@ -719,7 +722,7 @@ ISR(TIMER1_COMPA_vect) {
 			start = FALSE;
 		}
 	}
-	TCNT1 = 57723;
+	TCNT1 = 0;
 }
 /* --------- /Interrupt Service Routine --------- */
 
