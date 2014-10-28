@@ -709,6 +709,7 @@ ISR(INT2_vect) {
 }
 
 ISR(TIMER1_OVF_vect) {
+ISR(TIMER1_COMPA_vect) {
 	if (start) {
 		timer--;
 		drawTimer(timer);
