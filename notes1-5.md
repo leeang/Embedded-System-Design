@@ -36,10 +36,10 @@ Diagonal pliers (or wire cutters or diagonal cutting pliers or diagonal cutters)
 pro-active adj.  
 积极主动的
 
-assumed knowledge n.
+assumed knowledge n.  
 先修课程
 
-#### Lecture 2
+#### Lecture 2 Revision
 0805 resistor max power dissipation = 0.125 Watt.
 
 dope v.  
@@ -61,3 +61,40 @@ tristate = not connected = floating
 peripheral n. /pəˈrɪfərəl/  
 Peripherals are devices that can be attached to computers. (计算机的) 外围设备 [计算机]
 
+#### Lecture 3 Printed Circuit Boards
+plage v.  
+电镀
+
+fibreglass n.  
+Fibreglass is a material made from short, thin threads of glass which can be used to stop heat from escaping. 玻璃纤维
+
+neat adj.  
+A neat place, thing, or person is organized and clean, and has everything in the correct place. 整洁的
+
+lithography n. /lɪˈθɒɡrəfɪ/  
+Lithography is a method of printing in which a piece of stone or metal is specially treated so that ink sticks to some parts of it and not to others. 平板印刷术
+
+corrode v.  
+If metal or stone corrodes, or is corroded, it is gradually destroyed by a chemical or by rust. 腐蚀
+
+lacquer /ˈlækə/ n.  
+Lacquer is a special liquid which is painted on wood or metal in order to protect it and to make it shiny. 保护漆
+
+#### Lecture 5 Power Supply
+battery holder n.  
+电池盒
+
+buck converter n.  
+降压转换器
+
+boost converter n.  
+升压转换器
+
+Zener diode /ˈziːnə/ n.  
+a semiconductor diode that exhibits a sharp increase in reverse current at a well-defined reverse voltage: used as a voltage regulator 齐纳二极管 稳压二极管
+
+anode /ˈænəʊd/ n.  
+In electronics, an anode is the positive electrode in a cell such as a battery. 阳极
+
+cathode /ˈkæθəʊd/ n.  
+A cathode is the negative electrode in a cell such as a battery. 阴极
