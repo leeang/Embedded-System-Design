@@ -1,9 +1,9 @@
 ####Lecture 6 Push Buttons, Interrupts, LEDs
 
-#####Q1
+**Q1**  
 4V * 100mA / 90% / 3.2V = 139mA
 
-#####Q2
+**Q2**  
 90%
 
 simultaneous /ˌsɪməlˈteɪnɪəs/ adj.  
@@ -12,7 +12,7 @@ Things which are simultaneous happen or exist at the same time. 同时的
 polling n.  
 Polling, or polled operation, in computer science, refers to actively sampling the status of an external device by a client program as a synchronous activity. Polling is most often used in terms of input/output (I/O), and is also referred to as polled I/O or software-driven I/O. 论询
 
-Polling is chekcking if the button is pressed over and over agian.  
+Polling is checking if the button is pressed over and over agian.  
 wastes CPU cycles  
 known reaction time.
 
@@ -22,4 +22,48 @@ Reaction time less predictable.
 
 predictable adj.  
 If you say that an event is predictable, you mean that it is obvious in advance that it will happen. 可预见的
+
+Reset button  
+Good practice to use an external pull up and possibly a capacitor to ensure no accidental reset due to noise in the system.
+
+####Lecture 7 LEDs, SPI, LCD, RAM & ADC
+
+**Q1**  
+Because ATMEGA16 input pins have software enabled pull up resistors.
+
+**Q2**  
+1mAh / 1uA = 1000h = 41.7 days
+
+LED  
+Voltage drop across a diode depends on the colour of the diode.
+Current across an ideal diode is infinite, must always have a resistor in series or magic smoke escapes.
+
+spin n.  
+自旋
+
+electron n.  
+电子
+
+####Lecture 7 Crestals and PCBs
+
+**Q1**  
+Each microcontroller pin can only source 80mA, not enough to drive LCD.
+
+**Q2**  
+For any MOSFET that G is essentially a capacitor, should have a resistor between G and a microcontroller to avoid a current surge.
+
+ergonomic /ˌɜːɡəˈnɒmɪk/ adj.  
+of or relating to ergonomics 人类工程学的
+
+**high frequency signals** as short as possible  
+**high current wires** as short as possible
+
+SMD = Surface Mount Device
+
+interlock v.  
+互锁
+
+
+
+Never put SMD parts under other parts. Don't have parts under the CLD or the battery pack.
 

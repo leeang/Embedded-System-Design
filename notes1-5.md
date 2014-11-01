@@ -51,7 +51,7 @@ If a situation permits something, it makes it possible for that thing to exist, 
 static discharge n.  
 静电放电
 
-arbitary adj.  
+arbitrary adj.  
 任意的
 
 tristate n.  
