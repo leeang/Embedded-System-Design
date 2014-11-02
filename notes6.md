@@ -63,7 +63,16 @@ SMD = Surface Mount Device
 interlock v.  
 互锁
 
+**crystal**
+All transfers between registers occur on clock edges.  
+Most critical part of the circuit.
+
+
 
 
 Never put SMD parts under other parts. Don't have parts under the CLD or the battery pack.
+
+1. LCD, battery pack, buttons.  
+2. microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analogue lines)
+3. the rest.
 
