@@ -9,3 +9,5 @@ By matching the impedance of your track with the input impedance of the device, 
 
 **Q3**  
 In order to optimize PCB layout.
+
+####Lecture 12 Microcontroller Internals
