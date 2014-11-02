@@ -87,10 +87,35 @@ High frequency tracks take the path of least indcutance.
 ####Lecture 9 PCB Do's and Don'ts
 
 **Q1**  
-Never put SMD parts under other parts. Don't have parts under the CLD or the battery pack.
+Never put SMD parts under other parts. Don't have parts under the LCD or the battery pack.
+Not accessible.
 
 **Q2**  
 1 LCD, battery pack, buttons.  
 2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
 3 the rest.
+
+Ground plane provides short signal return loops.
+
+Should tent vias underneath components.
+
+Should avoid vias near or on SMD pads, they will either bridge or siphon away solder.
+
+siphon /ˈsaɪfən/  v.
+If you siphon liquid from a container, you make it come out through a tube and down into a lower container by enabling the pressure of the air on it to push it out. 用虹吸管抽吸
+
+0603 for some capacitors  
+0805 for resistors, diodes.
+
+####Lecture 10 Advanced PCB Disign
+
+annular /ˈænjʊlə/ adj.  
+ADJ ring-shaped; of or forming a ring 环状的; 环的或形成环的
+
+antenna /ænˈtɛnə/ AmE n.  
+aerial /ˈɛərɪəl/ BrE n.  
+An aerial is a device or a piece of wire that sends and receives television or radio signals and is usually attached to a radio, television, car, or building. 天线
+
+crosstalk /ˈkrɒsˌtɔːk/ n.  
+unwanted signals in one channel of a communications system as a result of a transfer of energy from one or more other channels 电信频道之间的串话干扰
 
