@@ -12,7 +12,7 @@ Things which are simultaneous happen or exist at the same time. 同时的
 polling n.  
 Polling, or polled operation, in computer science, refers to actively sampling the status of an external device by a client program as a synchronous activity. Polling is most often used in terms of input/output (I/O), and is also referred to as polled I/O or software-driven I/O. 论询
 
-Polling is checking if the button is pressed over and over agian.  
+Polling is checking if the button is pressed over and over again.  
 wastes CPU cycles  
 known reaction time.
 
@@ -44,7 +44,7 @@ spin n.
 electron n.  
 电子
 
-####Lecture 8 Crestals and PCBs
+####Lecture 8 Crystals and PCBs
 
 **Q1**  
 Each microcontroller pin can only source 80mA, not enough to drive LCD.
@@ -82,7 +82,7 @@ Second highest frequency parts.
 **PCB tracks**  
 Wider, less inductance.
 High current tracks take the path of least resistance.
-High frequency tracks take the path of least indcutance.
+High frequency tracks take the path of least inductance.
 
 ####Lecture 9 PCB Do's and Don'ts
 
@@ -107,7 +107,7 @@ If you siphon liquid from a container, you make it come out through a tube and d
 0603 for some capacitors  
 0805 for resistors, diodes.
 
-####Lecture 10 Advanced PCB Disign
+####Lecture 10 Advanced PCB Design
 
 annular /ˈænjʊlə/ adj.  
 ADJ ring-shaped; of or forming a ring 环状的; 环的或形成环的
