@@ -44,7 +44,7 @@ spin n.
 electron n.  
 电子
 
-####Lecture 7 Crestals and PCBs
+####Lecture 8 Crestals and PCBs
 
 **Q1**  
 Each microcontroller pin can only source 80mA, not enough to drive LCD.
@@ -79,16 +79,18 @@ electric charge n.
 Close to each power pin as possible.
 Second highest frequency parts.
 
-**PCB tracks**
+**PCB tracks**  
 Wider, less inductance.
 High current tracks take the path of least resistance.
 High frequency tracks take the path of least indcutance.
 
+####Lecture 9 PCB Do's and Don'ts
 
-
-
+**Q1**  
 Never put SMD parts under other parts. Don't have parts under the CLD or the battery pack.
 
-1. LCD, battery pack, buttons.  
-2. microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)
-3. the rest.
+**Q2**  
+1 LCD, battery pack, buttons.  
+2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
+3 the rest.
+
