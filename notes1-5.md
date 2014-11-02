@@ -88,6 +88,7 @@ buck converter n.
 降压转换器
 
 boost converter n.  
+step-up converter  
 升压转换器
 
 Zener diode /ˈziːnə/ n.  

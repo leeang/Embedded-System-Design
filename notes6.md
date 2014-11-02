@@ -63,9 +63,26 @@ SMD = Surface Mount Device
 interlock v.  
 互锁
 
-**crystal**
+**Crystal**  
 All transfers between registers occur on clock edges.  
 Most critical part of the circuit.
+Highest frequency device in the system.
+Analog system, sensitive to noise.
+
+piezoelectric adj.  
+压电的
+
+electric charge n.  
+电荷
+
+**Decoupling capacitors**  
+Close to each power pin as possible.
+Second highest frequency parts.
+
+**PCB tracks**
+Wider, less inductance.
+High current tracks take the path of least resistance.
+High frequency tracks take the path of least indcutance.
 
 
 
@@ -73,6 +90,5 @@ Most critical part of the circuit.
 Never put SMD parts under other parts. Don't have parts under the CLD or the battery pack.
 
 1. LCD, battery pack, buttons.  
-2. microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analogue lines)
+2. microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)
 3. the rest.
-
