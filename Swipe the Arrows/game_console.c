@@ -175,8 +175,6 @@ void analogReadInit(void) {
 unsigned int analogRead(void) {
 	ADCSRA |= _BV(ADSC);
 /*
-	ADC Start Conversion, Prescaler Select
-
 	Page 219
 	Bit 6 – ADSC: ADC Start Conversion
 		In Single Conversion mode, write this bit to one to start each conversion.
