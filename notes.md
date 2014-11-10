@@ -71,6 +71,7 @@ ADD Register 1 to Register 2
 
 ###Self documenting Code
 	#define ON 0xFF
+	#define INFINITE_LOOP 1
 
 	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
 	#define GET(PIN, MASK) PIN & MASK
@@ -81,7 +82,7 @@ ADD Register 1 to Register 2
 	SET(SPCE, SPI_ENABLE, ON);
 
 ###Etch a Sketch
-	while(infiniteLoop) {
+	while(INFINITE_LOOP) {
 		if(upButton) row++;
 		if(downButton) row--;
 		if(leftButton) column--;
