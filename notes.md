@@ -344,7 +344,7 @@ If the Global Interrupt Enable (GIE) is set:
 
 **Execution of the program line 1**
 + Load Immediate Register 1 25
-+ Program counter points to program address with `ldi r1, 0x19`
++ **Program counter** points to program address with `ldi r1, 0x19`
 + On rising edge of clock1, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
  - Output the value 0x19 onto the **direct addressing line**
@@ -353,7 +353,7 @@ If the Global Interrupt Enable (GIE) is set:
 
 **Execution of the program line 2**
 + Load Immediate Register 2 36
-+ Program counter points to program address with `ldi r2, 0x25`
++ **Program counter** points to program address with `ldi r2, 0x25`
 + On rising edge of clock2, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
  - Output the value 0x25 onto the **direct addressing line**
@@ -362,7 +362,7 @@ If the Global Interrupt Enable (GIE) is set:
 
 **Execution of program line 3**
 + ADD Register 1 to Register 2
-+ Program counter points to program address with `add r1, r2`
++ **Program counter** points to program address with `add r1, r2`
 + On rising edge of clock3, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
  - Output the value from register 1 to input 1 of the ALU
@@ -371,7 +371,7 @@ If the Global Interrupt Enable (GIE) is set:
  - The input of register 1 is enabled
 
 **Execution of program line 4**
-+ Program counter points to program address with `out PORTB, r1`
++ **Program counter** points to program address with `out PORTB, r1`
 + On rising edge of clock4, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
  - Output the value from register 1 onto the **data bus**
@@ -384,7 +384,7 @@ If the Global Interrupt Enable (GIE) is set:
 	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
 	#define GET(PIN, MASK) PIN & MASK
 
-	SET(PORATB, _BV(PB6), ON);
+	SET(PORTB, _BV(PB6), ON);
 
 	#define SPI_ENABLE (_BV(SPIE) | _BV(SPE))
 	SET(SPCE, SPI_ENABLE, ON);
