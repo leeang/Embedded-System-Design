@@ -312,10 +312,25 @@ An interpretation of something is an opinion about what it means. 解释
 diagonal adj.  
 A diagonal line or movement goes in a sloping direction, for example, from one corner of a square across to the opposite corner. 对角线的; 斜的
 
-####Key Point
+###Key Point
 1. diagram on datasheet page 8 / assembly language
 2. diagram on datasheet page 51
 3. LCD & power schematic
 4. self documenting
 5. etch a sketch code
 6. .c .h .s .elf .hex
+
+####Interrupt Service Routine
+What happens during an ISR
+
+Interrupt arrives at the interrupt unit
+
+If the Global Interrupt Enable (GIE) is set:
+*   GIE is cleared (instruction is CLI CLear Interrupt) disabling new interrupts
+*   The program counter is pushed to the stack
+*   The processor jumps to the interrupt vector (hard wired)
+*   The interrupt vector ordinarily has a jump instruction to the ISR
+*   Once the ISR is complete it runs a return from interrupt inst
+*   This returns the previous program counter from the stack
+*   Enables GIE (instruction is SEI SEt Interrupt)
+*   Executes one more instruction before servicing any more ISRs
