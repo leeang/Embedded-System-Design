@@ -313,12 +313,13 @@ diagonal adj.
 A diagonal line or movement goes in a sloping direction, for example, from one corner of a square across to the opposite corner. 对角线的; 斜的
 
 ##Key Point
+1. Interrupt Service Routine
 1. diagram on datasheet page 8 / assembly language
-2. diagram on datasheet page 51
-3. LCD & power schematic
-4. self documenting
-5. etch a sketch code
-6. .c .h .s .elf .hex
+1. self documenting
+1. etch a sketch code
+1. .c .h .s .elf .hex
+1. LCD & power schematic
+1. diagram on datasheet page 51
 
 ###Interrupt Service Routine
 What happens during an ISR  
