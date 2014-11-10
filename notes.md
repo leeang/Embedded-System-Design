@@ -337,16 +337,13 @@ If the Global Interrupt Enable (GIE) is set:
 
 ###Assembly Language
 	ldi r1, 0x19
-	; Load Immediate Register 1 25
 	ldi r2, 0x24
-	; Load Immediate Register 2 36
 	add r1, r2
-	; ADD Register 1 to Register 2
 	out PORTB, r1
-	;
 
 
 **Execution of the program line 1**
++ Load Immediate Register 1 25
 + Program counter points to program address with `ldi r1, 0x19`
 + On rising edge of clock1, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
@@ -355,6 +352,7 @@ If the Global Interrupt Enable (GIE) is set:
 + On clock2 rising edge 0x19 is latched into register 1
 
 **Execution of the program line 2**
++ Load Immediate Register 2 36
 + Program counter points to program address with `ldi r2, 0x25`
 + On rising edge of clock2, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
@@ -363,6 +361,7 @@ If the Global Interrupt Enable (GIE) is set:
 + On clock3 rising edge 0x25 is latched into register 2
 
 **Execution of program line 3**
++ ADD Register 1 to Register 2
 + Program counter points to program address with `add r1, r2`
 + On rising edge of clock3, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
