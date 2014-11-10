@@ -317,7 +317,7 @@ A diagonal line or movement goes in a sloping direction, for example, from one c
 1. diagram on datasheet page 8 / assembly language
 1. self documenting
 1. etch a sketch code
-1. .c .h .s .elf .hex
+1. .c .h .s .elf .hex (flow chart)
 1. LCD & power schematic
 1. diagram on datasheet page 51
 
@@ -326,13 +326,13 @@ What happens during an ISR
 Interrupt arrives at the interrupt unit
 
 If the Global Interrupt Enable (GIE) is set:  
-1.   GIE is cleared (instruction is CLI CLear Interrupt) disabling new interrupts  
-2.   The program counter is pushed to the stack  
-3.   The processor jumps to the interrupt vector (hard wired)  
-4.   The interrupt vector ordinarily has a jump instruction to the ISR  
-5.   Once the ISR is complete it runs a return from interrupt instantaneously  
-6.   This returns the previous program counter from the stack  
-7.   Enables GIE (instruction is SEI SEt Interrupt)  
+1.   *GIE* is cleared (instruction is CLI CLear Interrupt) disabling new interrupts  
+2.   The *program counter* is pushed to the stack  
+3.   The processor jumps to the *interrupt vector* (hard wired)  
+4.   The *interrupt vector* ordinarily has a jump instruction to the *ISR*  
+5.   Once the *ISR* is complete it runs a return from interrupt instantaneously  
+6.   This returns the previous *program counter* from the stack  
+7.   Enables *GIE* (instruction is SEI SEt Interrupt)  
 8.   Executes one more instruction before servicing any more ISRs
 
 ###Self documenting Code
