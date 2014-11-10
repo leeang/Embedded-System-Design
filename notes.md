@@ -326,14 +326,40 @@ What happens during an ISR
 Interrupt arrives at the interrupt unit
 
 If the Global Interrupt Enable (GIE) is set:  
-1.   *GIE* is cleared (instruction is CLI CLear Interrupt) disabling new interrupts  
-2.   The *program counter* is pushed to the stack  
-3.   The processor jumps to the *interrupt vector* (hard wired)  
-4.   The *interrupt vector* ordinarily has a jump instruction to the *ISR*  
-5.   Once the *ISR* is complete it runs a return from interrupt instantaneously  
-6.   This returns the previous *program counter* from the stack  
-7.   Enables *GIE* (instruction is SEI SEt Interrupt)  
-8.   Executes one more instruction before servicing any more ISRs
+1. *GIE* is cleared (instruction is CLI CLear Interrupt) disabling new interrupts  
+2. The *program counter* is pushed to the stack  
+3. The processor jumps to the *interrupt vector* (hard wired)  
+4. The *interrupt vector* ordinarily has a jump instruction to the *ISR*  
+5. Once the *ISR* is complete it runs a return from interrupt instantaneously  
+6. This returns the previous *program counter* from the stack  
+7. Enables *GIE* (instruction is SEI SEt Interrupt)  
+8. Executes one more instruction before servicing any more ISRs
+
+###Assembly Language
+	ldi r1, 0x19
+	; Load Immediate Register 1 25
+	ldi r2, 0x24
+	; Load Immediate Register 2 36
+	add r1, r2
+	; ADD Register 1 to Register 2
+
+*Execution of the program line 1*
++ Program counter points to program address with `ldi r1, 0x19`
++ On rising edge of clock1, the instruction is latched into the instruction register and the program counter is incremented
++ The instruction is decoded and the control signals are activated to do the following
+- Output the value 0x19 onto the direct addressing line
+- Input enable register 1
++ On clock 2 rising edge 0x19 is latched into register 1
+
+*Execution of the program line 2*
++ Program counter points to program address with `ldi r2, 0x25`
++ On rising edge of clock 2, the instruction is latched into the instruction register and the program counter is incremented
++ The instruction is decoded and the control signals are activated to do the following
+- Output the value 0x25 onto the direct addressing line
+- Input enable register 2
++ On clock 3 rising edge 0x25 is latched into register 2
+
+*Execution of program line 3*
 
 ###Self documenting Code
 	#define WRITE(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
