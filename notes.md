@@ -30,7 +30,7 @@ If the Global Interrupt Enable (GIE) is set:
 	out PORTB, r1
 
 
-**Execution of the program line 1**  
+**Execution of program line 1**  
 Load Immediate Register 1 25
 
 + **Program counter** points to program address with `ldi r1, 0x19`
@@ -40,7 +40,7 @@ Load Immediate Register 1 25
  - The **input** of register 1 is **enabled**
 + On clock2 rising edge 0x19 is latched into register 1
 
-**Execution of the program line 2**  
+**Execution of program line 2**  
 Load Immediate Register 2 36
 
 + **Program counter** points to program address with `ldi r2, 0x25`
