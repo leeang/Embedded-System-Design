@@ -335,8 +335,8 @@ If the Global Interrupt Enable (GIE) is set:
 8.   Executes one more instruction before servicing any more ISRs
 
 ###Self documenting Code
-`#define WRITE(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))`  
-`#define READ(PIN, MASK) PIN & MASK`
+	#define WRITE(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
+	#define READ(PIN, MASK) PIN & MASK
 
 ###Etch a Sketch
 	while(infiniteLoop) {
