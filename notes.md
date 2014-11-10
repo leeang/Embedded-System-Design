@@ -326,11 +326,11 @@ What happens during an ISR
 Interrupt arrives at the interrupt unit
 
 If the Global Interrupt Enable (GIE) is set:
-1.   GIE is cleared (instruction is CLI CLear Interrupt) disabling new interrupts
-2.   The program counter is pushed to the stack
-3.   The processor jumps to the interrupt vector (hard wired)
-4.   The interrupt vector ordinarily has a jump instruction to the ISR
-5.   Once the ISR is complete it runs a return from interrupt inst
-6.   This returns the previous program counter from the stack
-7.   Enables GIE (instruction is SEI SEt Interrupt)
-8.   Executes one more instruction before servicing any more ISRs
+1.   GIE is cleared (instruction is CLI CLear Interrupt) disabling new interrupts  
+2.   The program counter is pushed to the stack  
+3.   The processor jumps to the interrupt vector (hard wired)  
+4.   The interrupt vector ordinarily has a jump instruction to the ISR  
+5.   Once the ISR is complete it runs a return from interrupt inst  
+6.   This returns the previous program counter from the stack  
+7.   Enables GIE (instruction is SEI SEt Interrupt)  
+8.   Executes one more instruction before servicing any more ISRs  
