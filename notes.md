@@ -3,9 +3,9 @@
 1. diagram on datasheet page 8 / assembly language
 1. self documenting
 1. etch a sketch code
+1. diagram on datasheet page 51
 1. .c .h .s .elf .hex (flowchart)
 1. LCD & power schematic
-1. diagram on datasheet page 51
 
 ###Interrupt Service Routine
 What happens during an ISR  
@@ -101,6 +101,9 @@ ADD Register 1 to Register 2
 		
 		_delay_ms(255);
 	}
+
+###General Digital I/O
+![General Digital I/O] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/General%20Digital%20I:O.png)
 
 ###AVR GCC Flowchart
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
