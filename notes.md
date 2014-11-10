@@ -317,7 +317,7 @@ A diagonal line or movement goes in a sloping direction, for example, from one c
 1. diagram on datasheet page 8 / assembly language
 1. self documenting
 1. etch a sketch code
-1. .c .h .s .elf .hex (flow chart)
+1. .c .h .s .elf .hex (flowchart)
 1. LCD & power schematic
 1. diagram on datasheet page 51
 
@@ -414,3 +414,6 @@ ADD Register 1 to Register 2
 		
 		_delay_ms(255);
 	}
+
+###AVR GCC Flowchart
+![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
