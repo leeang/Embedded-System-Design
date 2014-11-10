@@ -347,8 +347,8 @@ If the Global Interrupt Enable (GIE) is set:
 + Program counter points to program address with `ldi r1, 0x19`
 + On rising edge of clock1, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
- - Output the value 0x19 onto the direct addressing line
- - Input enable register 1
+ - Output the value 0x19 onto the **direct addressing line**
+ - The input of register 1 is enabled
 + On clock2 rising edge 0x19 is latched into register 1
 
 **Execution of the program line 2**
@@ -356,8 +356,8 @@ If the Global Interrupt Enable (GIE) is set:
 + Program counter points to program address with `ldi r2, 0x25`
 + On rising edge of clock2, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
- - Output the value 0x25 onto the direct addressing line
- - Input enable register 2
+ - Output the value 0x25 onto the **direct addressing line**
+ - The input of register 2 is enabled
 + On clock3 rising edge 0x25 is latched into register 2
 
 **Execution of program line 3**
@@ -374,7 +374,7 @@ If the Global Interrupt Enable (GIE) is set:
 + Program counter points to program address with `out PORTB, r1`
 + On rising edge of clock4, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
- - Output the value from register 1 onto the data bus
+ - Output the value from register 1 onto the **data bus**
  - The input of register for PORTB is enabled
 + On clock5 rising edge output of r1 is latched into PORTB, the output is then available on the external pins
 
