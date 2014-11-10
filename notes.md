@@ -1,3 +1,111 @@
+##Key Point
+1. Interrupt Service Routine
+1. diagram on datasheet page 8 / assembly language
+1. self documenting
+1. etch a sketch code
+1. .c .h .s .elf .hex (flowchart)
+1. LCD & power schematic
+1. diagram on datasheet page 51
+
+###Interrupt Service Routine
+What happens during an ISR  
+Interrupt arrives at the interrupt unit
+
+If the Global Interrupt Enable (GIE) is set:  
+1. **GIE** is cleared (instruction is CLI CLear Interrupt) disabling new interrupts  
+2. The **program counter** is pushed to the stack  
+3. The processor jumps to the **interrupt vector** (hard wired)  
+4. The **interrupt vector** ordinarily has a jump instruction to the **ISR**  
+5. Once the **ISR** is complete it runs a return from interrupt instantaneously  
+6. This returns the previous **program counter** from the stack  
+7. Enables **GIE** (instruction is SEI SEt Interrupt)  
+8. Executes one more instruction before servicing any more ISRs
+
+###Assembly Language
+![Architecture] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/architecture.png)
+
+	ldi r1, 0x19
+	ldi r2, 0x24
+	add r1, r2
+	out PORTB, r1
+
+
+**Execution of the program line 1**  
+Load Immediate Register 1 25
+
++ **Program counter** points to program address with `ldi r1, 0x19`
++ On rising edge of clock1, the instruction is latched into the **instruction register** and the **program counter** is incremented
++ The instruction is decoded and the control signals are activated to do the following
+ - Output the value 0x19 onto the **direct addressing line**
+ - The **input** of register 1 is **enabled**
++ On clock2 rising edge 0x19 is latched into register 1
+
+**Execution of the program line 2**  
+Load Immediate Register 2 36
+
++ **Program counter** points to program address with `ldi r2, 0x25`
++ On rising edge of clock2, the instruction is latched into the **instruction register** and the **program counter** is incremented
++ The instruction is decoded and the control signals are activated to do the following
+ - Output the value 0x25 onto the **direct addressing line**
+ - The **input** of register 2 is **enabled**
++ On clock3 rising edge 0x25 is latched into register 2
+
+**Execution of program line 3**  
+ADD Register 1 to Register 2
+
++ **Program counter** points to program address with `add r1, r2`
++ On rising edge of clock3, the instruction is latched into the **instruction register** and the **program counter** is incremented
++ The instruction is decoded and the control signals are activated to do the following
+ - Output the value from register 1 to input 1 of the ALU
+ - Output the value from register 2 to input 2 of the ALU
+ - The ALU instruction is set to ADD
+ - The **input** of register 1 is **enabled**
+
+**Execution of program line 4**
++ **Program counter** points to program address with `out PORTB, r1`
++ On rising edge of clock4, the instruction is latched into the **instruction register** and the **program counter** is incremented
++ The instruction is decoded and the control signals are activated to do the following
+ - Output the value from register 1 onto the **data bus**
+ - The **input** of register for PORTB is **enabled**
++ On clock5 rising edge output of r1 is latched into PORTB, the output is then available on the external pins
+
+###Self documenting Code
+	#define ON 0xFF
+
+	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
+	#define GET(PIN, MASK) PIN & MASK
+
+	SET(PORTB, _BV(PB6), ON);
+
+	#define SPI_ENABLE (_BV(SPIE) | _BV(SPE))
+	SET(SPCE, SPI_ENABLE, ON);
+
+###Etch a Sketch
+	while(infiniteLoop) {
+		if(upButton) row++;
+		if(downButton) row--;
+		if(leftButton) column--;
+		if(rightButton) column++;
+
+		page = row/8;
+		pixel = row%8;
+
+		selectPage(page);
+		selectColumn(column);
+
+		pixel = (_BV(pixel) | (frameBuffer[column][page]));
+		frameBuffer[column][page] = pixel;
+
+		LCD_DataTx(pixel);
+		
+		_delay_ms(255);
+	}
+
+###AVR GCC Flowchart
+![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
+
+##Lecture Notes
+
 #### Lecture 1
 
 tacit knowledge n.  
@@ -311,109 +419,3 @@ An interpretation of something is an opinion about what it means. 解释
 
 diagonal adj.  
 A diagonal line or movement goes in a sloping direction, for example, from one corner of a square across to the opposite corner. 对角线的; 斜的
-
-##Key Point
-1. Interrupt Service Routine
-1. diagram on datasheet page 8 / assembly language
-1. self documenting
-1. etch a sketch code
-1. .c .h .s .elf .hex (flowchart)
-1. LCD & power schematic
-1. diagram on datasheet page 51
-
-###Interrupt Service Routine
-What happens during an ISR  
-Interrupt arrives at the interrupt unit
-
-If the Global Interrupt Enable (GIE) is set:  
-1. **GIE** is cleared (instruction is CLI CLear Interrupt) disabling new interrupts  
-2. The **program counter** is pushed to the stack  
-3. The processor jumps to the **interrupt vector** (hard wired)  
-4. The **interrupt vector** ordinarily has a jump instruction to the **ISR**  
-5. Once the **ISR** is complete it runs a return from interrupt instantaneously  
-6. This returns the previous **program counter** from the stack  
-7. Enables **GIE** (instruction is SEI SEt Interrupt)  
-8. Executes one more instruction before servicing any more ISRs
-
-###Assembly Language
-![Architecture] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/architecture.png)
-
-	ldi r1, 0x19
-	ldi r2, 0x24
-	add r1, r2
-	out PORTB, r1
-
-
-**Execution of the program line 1**  
-Load Immediate Register 1 25
-
-+ **Program counter** points to program address with `ldi r1, 0x19`
-+ On rising edge of clock1, the instruction is latched into the **instruction register** and the **program counter** is incremented
-+ The instruction is decoded and the control signals are activated to do the following
- - Output the value 0x19 onto the **direct addressing line**
- - The **input** of register 1 is **enabled**
-+ On clock2 rising edge 0x19 is latched into register 1
-
-**Execution of the program line 2**  
-Load Immediate Register 2 36
-
-+ **Program counter** points to program address with `ldi r2, 0x25`
-+ On rising edge of clock2, the instruction is latched into the **instruction register** and the **program counter** is incremented
-+ The instruction is decoded and the control signals are activated to do the following
- - Output the value 0x25 onto the **direct addressing line**
- - The **input** of register 2 is **enabled**
-+ On clock3 rising edge 0x25 is latched into register 2
-
-**Execution of program line 3**  
-ADD Register 1 to Register 2
-
-+ **Program counter** points to program address with `add r1, r2`
-+ On rising edge of clock3, the instruction is latched into the **instruction register** and the **program counter** is incremented
-+ The instruction is decoded and the control signals are activated to do the following
- - Output the value from register 1 to input 1 of the ALU
- - Output the value from register 2 to input 2 of the ALU
- - The ALU instruction is set to ADD
- - The **input** of register 1 is **enabled**
-
-**Execution of program line 4**
-+ **Program counter** points to program address with `out PORTB, r1`
-+ On rising edge of clock4, the instruction is latched into the **instruction register** and the **program counter** is incremented
-+ The instruction is decoded and the control signals are activated to do the following
- - Output the value from register 1 onto the **data bus**
- - The **input** of register for PORTB is **enabled**
-+ On clock5 rising edge output of r1 is latched into PORTB, the output is then available on the external pins
-
-###Self documenting Code
-	#define ON 0xFF
-
-	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
-	#define GET(PIN, MASK) PIN & MASK
-
-	SET(PORTB, _BV(PB6), ON);
-
-	#define SPI_ENABLE (_BV(SPIE) | _BV(SPE))
-	SET(SPCE, SPI_ENABLE, ON);
-
-###Etch a Sketch
-	while(infiniteLoop) {
-		if(upButton) row++;
-		if(downButton) row--;
-		if(leftButton) column--;
-		if(rightButton) column++;
-
-		page = row/8;
-		pixel = row%8;
-
-		selectPage(page);
-		selectColumn(column);
-
-		pixel = (_BV(pixel) | (frameBuffer[column][page]));
-		frameBuffer[column][page] = pixel;
-
-		LCD_DataTx(pixel);
-		
-		_delay_ms(255);
-	}
-
-###AVR GCC Flowchart
-![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
