@@ -379,8 +379,15 @@ If the Global Interrupt Enable (GIE) is set:
 + On clock5 rising edge output of r1 is latched into PORTB, the output is then available on the external pins
 
 ###Self documenting Code
-	#define WRITE(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
-	#define READ(PIN, MASK) PIN & MASK
+	#define ON 0xFF
+
+	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
+	#define GET(PIN, MASK) PIN & MASK
+
+	SET(PORATB, _BV(PB6), ON);
+
+	#define SPI_ENABLE (_BV(SPIE) | _BV(SPE))
+	SET(SPCE, SPI_ENABLE, ON);
 
 ###Etch a Sketch
 	while(infiniteLoop) {
