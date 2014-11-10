@@ -336,6 +336,8 @@ If the Global Interrupt Enable (GIE) is set:
 8. Executes one more instruction before servicing any more ISRs
 
 ###Assembly Language
+![Architecture] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/architecture.png)
+
 	ldi r1, 0x19
 	ldi r2, 0x24
 	add r1, r2
