@@ -312,7 +312,7 @@ An interpretation of something is an opinion about what it means. 解释
 diagonal adj.  
 A diagonal line or movement goes in a sloping direction, for example, from one corner of a square across to the opposite corner. 对角线的; 斜的
 
-###Key Point
+##Key Point
 1. diagram on datasheet page 8 / assembly language
 2. diagram on datasheet page 51
 3. LCD & power schematic
@@ -320,9 +320,8 @@ A diagonal line or movement goes in a sloping direction, for example, from one c
 5. etch a sketch code
 6. .c .h .s .elf .hex
 
-####Interrupt Service Routine
-What happens during an ISR
-
+###Interrupt Service Routine
+What happens during an ISR  
 Interrupt arrives at the interrupt unit
 
 If the Global Interrupt Enable (GIE) is set:  
@@ -334,4 +333,8 @@ If the Global Interrupt Enable (GIE) is set:
 6.   This returns the previous program counter from the stack  
 7.   Enables GIE (instruction is SEI SEt Interrupt)  
 8.   Executes one more instruction before servicing any more ISRs
+
+###Self documenting Code
+`#define WRITE(REGISTER, MASK, VALUE)	REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))`  
+`#define READ(PIN, MASK)	PIN & MASK`
 
