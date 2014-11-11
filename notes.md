@@ -107,14 +107,14 @@ ADD Register 1 to Register 2
 
 **What is the main use of the 2 stage synchronizer connected to each I/O pin?**
 
-If the clock edge and the data edge occurs at the same time then a race condition occurs.  
-It will remain in this state until noise knkocks it out of that state.  
-The time it is in the metastable state varies but takes on a probabilistic curve.
++ If the clock edge and the data edge occurs at the same time then a race condition occurs.  
++ It will remain in this state until noise knkocks it out of that state.  
++ The time it is in the metastable state varies but takes on a probabilistic curve.
 
-Two registers. If metastability occurs, it occurs at the first register.  
-By the time it arrives at the next register PINx, it should be stable.  
-There is a two I/O clock cycle delay before data arrives at the data bus.  
-When RPx is enabled the state at PINx is available on the bus.
++ Two registers. If metastability occurs, it occurs at the first register.  
++ By the time it arrives at the next register PINx, it should be stable.  
++ There is a two I/O clock cycle delay before data arrives at the data bus.  
++ When RPx is enabled the state at PINx is available on the bus.
 
 ###AVR GCC Flowchart
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
@@ -516,3 +516,7 @@ A reverberation is the shaking and echoing effect that you hear after a loud sou
 
 insulate /ˈɪnsjʊˌleɪt/ v.  
 If a piece of equipment is insulated, it is covered with rubber or plastic to prevent electricity from passing through it and giving the person using it an electric shock. 使绝缘
+
+interval /ˈɪntəvəl/ n.  
+An interval between two events or dates is the period of time between them. (时间上的) 间隔
+
