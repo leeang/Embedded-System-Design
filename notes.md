@@ -121,7 +121,16 @@ ADD Register 1 to Register 2
 
 High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** links related libraries and adds the startup code to generate a .elf file. Eventually, the .elf file is converted into a hex file (which will be uploaded to the programmer) by the **object copy**.
 
+
+
 ##Example Exam Question
+####Lecture 3
+Why use a PCB?  
+Easier to assemble  
+Neater  
+More robust  
+
+
 ####Lecture 6
 **Q1**  
 4V * 100mA / 90% / 3.2V = 139mA
@@ -132,6 +141,8 @@ High level language files get compiled into .s files (speaking Assembly Language
 
 ####Lecture 7
 **Q1**  
+Why would you not have an external pull-up resistor on an input to the ATmega 16?
+
 Because ATMEGA16 input pins have software enabled pull up resistors.
 
 **Q2**  
@@ -140,23 +151,29 @@ Because ATMEGA16 input pins have software enabled pull up resistors.
 
 ####Lecture 8
 **Q1**  
+Why don't you drive the backlight of the LCD directly from the output of the ATmega 16?
+
 Each microcontroller pin can only source 80mA, not enough to drive LCD.
 
 **Q2**  
+Why would you put a 15 ohm resistor in series with the MOSFET's gate?
+
 For any MOSFET that G is essentially a capacitor, should have a resistor between G and a microcontroller to avoid a current surge.
 
 
 ####Lecture 9
 **Q1**  
-Why would you not place parts under a component such as an LCD or battery holder?  
+Why would you not place parts under a component such as an LCD or battery holder?
+
 Never put SMD parts under other parts. Don't have parts under the LCD or the battery pack.  
 Otherwise, we have to remove a large component to fix them. Debugging the circuit would be difficult without immediate access to the components.  
 Heat dissipation might be an issue depending what these components are.  
 There will not be even space to put up LCD over a big capacitor.
 
 **Q2**  
-What order did you place your components and why.  
-1 LCD, battery pack, buttons. (through-hole componets that influence the other side of the PCB) 
+What order did you place your components and why.
+
+1 LCD, battery pack, buttons. (through-hole componets that influence the other side of the PCB; ergonomics consideration) 
 2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
 3 the rest.
 
@@ -184,17 +201,26 @@ In order to optimize PCB layout.
 General I/O pins are completely interchangeable.
 
 
+####Lecture 16
+**Q1**  
+Referencing to page 8 of the Atmega 16 datasheet, describe what happens when the following instructions are executed by the ATmega 16.
+
+**Q2**  
+What is the most important part of soldering?
+
++ Heat transfer
++ Make sure the area is clean and the tip is well tinned.
++ Make sure the temperature is set to a suitable range(300 C). Otherwise, the solder might get oxidized.
+
 ####Lecture 17
 **Q1**  
 Describe how a file is converted from a .c and .h file into machine code.
 
 **Q3**  
+Why don't you use malloc or calloc on an AVR?
+
 No operating system to catch faults.  
 The microcontroller does not have an operating system that ensures important reserved memories are left untouched.
-
-
-Why should you tent vias underneath components?  
-There is a chance of a via accidentally connecting with the component (placed above) if it is not tented. Tent forms an insulating cover on the via. To prevent short-circuit under the component.
 
 
 
@@ -282,6 +308,9 @@ If metal or stone corrodes, or is corroded, it is gradually destroyed by a chemi
 
 lacquer /ˈlækə/ n.  
 Lacquer is a special liquid which is painted on wood or metal in order to protect it and to make it shiny. 保护漆
+
+
+#### Lecture 4 Schematic Layout
 
 
 #### Lecture 5 Power Supply
@@ -378,6 +407,9 @@ Ground plane provides short signal return loops.
 
 Should tent vias underneath components.
 
+Why should you tent vias underneath components?  
+There is a chance of a via accidentally connecting with the component (placed above) if it is not tented. Tent forms an insulating cover on the via. To prevent short-circuit under the component.
+
 Should avoid vias near or on SMD pads, they will either bridge or siphon away solder.
 
 siphon /ˈsaɪfən/  v.
@@ -455,7 +487,16 @@ intermittent adj.
 Something that is intermittent happens occasionally rather than continuously. 断断续续的
 
 
+####Lecture 16 C Code Chain
+
+
 ####Lecture 17 Interrupts and Good Code
+
+
+####Lecture 18 Good Code and AVR studio
+
+
+####Lecture 19 SPI and LCD interface
 
 
 ####Lecture 20 Exam Rules
@@ -519,4 +560,3 @@ If a piece of equipment is insulated, it is covered with rubber or plastic to pr
 
 interval /ˈɪntəvəl/ n.  
 An interval between two events or dates is the period of time between them. (时间上的) 间隔
-
