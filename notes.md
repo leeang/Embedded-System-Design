@@ -147,8 +147,8 @@ ADD Register 1 to Register 2
 High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** links related libraries and adds the startup code to generate a .elf file. Eventually, the .elf file is converted into a hex file (which will be uploaded to the programmer) by the **object copy**.
 
 ###Power & LCD schematic
-![Power Schematic] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/LCD%20Schematic.png)
-![LCD Schematic] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/Power%20Schematic.png)
+![Power Schematic] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/Power%20Schematic.png)
+![LCD Schematic] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/LCD%20Schematic.png)
 
 
 
