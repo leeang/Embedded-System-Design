@@ -1,6 +1,6 @@
 > Author: Ang Li  
 > Blog: [angli.me](http://angli.me/)  
-> Github: https://github.com/leeang/Embedded-System-Design
+> Github: [github.com/leeang/Embedded-System-Design](https://github.com/leeang/Embedded-System-Design)
 
 ##Key Point
 1. Interrupt Service Routine
