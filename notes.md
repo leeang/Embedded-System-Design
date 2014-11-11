@@ -1,3 +1,7 @@
+> Author: Ang Li  
+> Blog: [angli.me](http://angli.me/)  
+> Github: https://github.com/leeang/Embedded-System-Design
+
 ##Key Point
 1. Interrupt Service Routine
 1. diagram on datasheet page 8 / Assembly Language
@@ -107,7 +111,7 @@ ADD Register 1 to Register 2
 ###General Digital I/O
 ![General Digital I/O] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/General%20Digital%20I:O.png)
 
-* [How I/O pins work - Sahil Khanna](http://sahilkhanna.org/blog/wp-content/uploads/2014/11/how-io-pin-works.pdf)  
+[How I/O pins work - Sahil Khanna](http://sahilkhanna.org/blog/wp-content/uploads/2014/11/how-io-pin-works.pdf)  
 
 #####PORTx
 + A register that stores data that is available at the physical pin. Stores data on **WPx** rising edge.
@@ -228,6 +232,10 @@ General I/O pins are completely interchangeable.
 No operating system to catch faults.  
 The microcontroller does not have an operating system that ensures important reserved memories are left untouched.
 
+####Lecture 22
+**Q4** Why would you place a small ground plane around the crystal with lots of vias?
+
+If possible, place a guard ring (connected to ground) around the crystal. This helps isolate the crystal from noise coupled from adjacent signals. http://www.emesystems.com/pdfs/parts/DS1307_xtal.pdf
 
 
 ##Lecture Notes
