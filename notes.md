@@ -182,6 +182,15 @@ No operating system to catch faults.
 The microcontroller does not have an operating system that ensures important reserved memories are left untouched.
 
 
+Why should you tent vias underneath components?  
+There is a chance of a via accidentally connecting with the component (placed above) if it is not tented. Tent forms an insulating cover on the via. To prevent short-circuit under the component.
+
+What is the main use of the 2 stage synchronizer connected to each I/O pin?  
+If the clock edge and the data edge occurs at the same time then a race condition occurs.  
+It will remain in this state until noise knkocks it out of that state.  
+The time it is in the metastable state varies but takes on a probabilistic curve.
+
+
 
 ##Lecture Notes
 
@@ -498,3 +507,6 @@ Something that is explicit is expressed or shown clearly and openly, without any
 
 reverberation /rɪˌvɜːbəˈreɪʃən/ n.  
 A reverberation is the shaking and echoing effect that you hear after a loud sound has been made. 回响; 回声
+
+insulate /ˈɪnsjʊˌleɪt/ v.  
+If a piece of equipment is insulated, it is covered with rubber or plastic to prevent electricity from passing through it and giving the person using it an electric shock. 使绝缘
