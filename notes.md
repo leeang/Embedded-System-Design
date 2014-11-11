@@ -29,6 +29,8 @@ If the Global Interrupt Enable (GIE) is set:
 	add r1, r2
 	out PORTB, r1
 
+Instructions are stored in program memory and executed consecutively.  
+The program is stored in Flash Program Memory.
 
 **Execution of program line 1**  
 Load Immediate Register 1 25
@@ -105,16 +107,32 @@ ADD Register 1 to Register 2
 ###General Digital I/O
 ![General Digital I/O] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/General%20Digital%20I:O.png)
 
+#####PORTx
++ A register that stores data that is available at the physical pin. Stores data on **WPx** rising edge.
++ This register can be both written to and read from. Outputs to the data bus if **RRx** is enabled (you can use it to check what is already there)
++ The register (all 8bits) are referred to as PORTx if referring to a particular bit you refer to it as PORTxn where x is the register, n is the bit.
++ AVR uses the most significant bit as the highest bit (0x80 is the MSB, 0x01 is the LSB)
+
+#####DDRx
++ Data Direction Register x
++ A register that stores whether the output register (PORTx) is available on the physical pin. Stored when there is a rising edge on **WDx**
++ Connected to the tri-state buffer at the output of PORTx.
++ This register can be written and readfrom (you can use it to check what is already there). Available on data bus when **RDx** is enabled
+
+#####PINx
++ Diodes ensure that voltage on the pin are not 1 diode drop higher than VCC or 1 diode drop lower than GND
++ R<sub>pu</sub> is between 20k and 50k ohms
+
 **What is the main use of the 2 stage synchronizer connected to each I/O pin?**
 
-+ If the clock edge and the data edge occurs at the same time then a race condition occurs.  
-+ It will remain in this state until noise knkocks it out of that state.  
++ If the clock edge and the data edge occurs at the same time then a race condition occurs.
++ It will remain in this state until noise knkocks it out of that state.
 + The time it is in the metastable state varies but takes on a probabilistic curve.
 
-+ Two registers. If metastability occurs, it occurs at the first register.  
-+ By the time it arrives at the next register PINx, it should be stable.  
-+ There is a two I/O clock cycle delay before data arrives at the data bus.  
-+ When RPx is enabled the state at PINx is available on the bus.
++ Two registers. If metastability occurs, it occurs at the first register.
++ By the time it arrives at the next register PINx, it should be stable.
++ There is a two I/O clock cycle delay before data arrives at the data bus.
++ When **RPx** is enabled the state at PINx is available on the bus.
 
 ###AVR GCC Flowchart
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
