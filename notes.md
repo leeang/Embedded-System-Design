@@ -152,13 +152,23 @@ What order did you place your components and why.
 
 ####Lecture 11
 **Q1**  
+Why might you have a big ground plane and Vcc plane on a multilayer board?
+
+Act as a good capacitor to decouple the system.  
+Easy to make shorter tracks to the pins/devices that require GND or VCC.  
+Guaranteed path of lowest inductance.
+
 Ensure shortest possible return path for signals.
 
 **Q2**  
+Why would you terminate a PCB track with a resistor?
+
 A signal travelling down an unterminated wire will reflect doubling the voltage on the way back.  
 By matching the impedance of your track with the input impedance of the device, these reflections can be eliminated. (often with the help of a termination resistor)
 
 **Q3**  
+Why might you swap general IO pins around on a microcontroller?
+
 In order to optimize PCB layout.  
 General I/O pins are completely interchangeable.
 
@@ -486,3 +496,5 @@ When there is interference, a radio signal is affected by other radio waves or e
 explicit adj.  
 Something that is explicit is expressed or shown clearly and openly, without any attempt to hide anything. 明确表达的; 公开显露的
 
+reverberation /rɪˌvɜːbəˈreɪʃən/ n.  
+A reverberation is the shaking and echoing effect that you hear after a loud sound has been made. 回响; 回声
