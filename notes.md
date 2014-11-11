@@ -1,9 +1,9 @@
 ##Key Point
 1. Interrupt Service Routine
-1. diagram on datasheet page 8 / assembly language
+1. diagram on datasheet page 8 / Assembly Language
 1. self documenting
 1. etch a sketch code
-1. diagram on datasheet page 51
+1. diagram on datasheet page 51 / General Digital I/O
 1. .c .h .s .elf .hex (flowchart)
 1. LCD & power schematic
 
@@ -108,9 +108,33 @@ ADD Register 1 to Register 2
 ###AVR GCC Flowchart
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
 
+##Example Exam Question
+#### Lecture 6
+**Q1**  
+4V * 100mA / 90% / 3.2V = 139mA
+
+**Q2**  
+90%
+
+#### Lecture 7
+
+**Q1**  
+Because ATMEGA16 input pins have software enabled pull up resistors.
+
+**Q2**  
+1mAh / 1uA = 1000h = 41.7 days
+
+####Lecture 1
+####Lecture 1
+####Lecture 1
+####Lecture 1
+####Lecture 1
+####Lecture 1
+####Lecture 1
+
 ##Lecture Notes
 
-#### Lecture 1
+####Lecture 1
 
 tacit knowledge n.  
 隐性知识
@@ -151,7 +175,7 @@ pro-active adj.
 assumed knowledge n.  
 先修课程
 
-#### Lecture 2 Revision
+####Lecture 2 Revision
 0805 resistor max power dissipation = 0.125 Watt.
 
 dope v.  
@@ -173,7 +197,7 @@ tristate = not connected = floating
 peripheral n. /pəˈrɪfərəl/  
 Peripherals are devices that can be attached to computers. (计算机的) 外围设备 [计算机]
 
-#### Lecture 3 Printed Circuit Boards
+####Lecture 3 Printed Circuit Boards
 plage v.  
 电镀
 
@@ -214,12 +238,6 @@ A cathode is the negative electrode in a cell such as a battery. 阴极
 
 ####Lecture 6 Push Buttons, Interrupts, LEDs
 
-**Q1**  
-4V * 100mA / 90% / 3.2V = 139mA
-
-**Q2**  
-90%
-
 simultaneous /ˌsɪməlˈteɪnɪəs/ adj.  
 Things which are simultaneous happen or exist at the same time. 同时的
 
@@ -241,12 +259,6 @@ Reset button
 Good practice to use an external pull up and possibly a capacitor to ensure no accidental reset due to noise in the system.
 
 ####Lecture 7 LEDs, SPI, LCD, RAM & ADC
-
-**Q1**  
-Because ATMEGA16 input pins have software enabled pull up resistors.
-
-**Q2**  
-1mAh / 1uA = 1000h = 41.7 days
 
 LED  
 Voltage drop across a diode depends on the colour of the diode.
