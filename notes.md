@@ -108,6 +108,8 @@ ADD Register 1 to Register 2
 ###AVR GCC Flowchart
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
 
+High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** looks for definitions of operators used by this .obj file from related libraries and adds the startup code to generate a .elf file. Eventually, the .elf file is converted into a hex file (which will be uploaded to the programmer) by the **object copy**.
+
 ##Example Exam Question
 ####Lecture 6
 **Q1**  
@@ -157,7 +159,8 @@ In order to optimize PCB layout.
 
 
 ####Lecture 17
-**Q1**
+**Q1**  
+Describe how a file is converted from a .c and .h file into machine code.
 
 **Q3**
 No operating system to catch faults.
