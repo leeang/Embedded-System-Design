@@ -107,6 +107,8 @@ ADD Register 1 to Register 2
 ###General Digital I/O
 ![General Digital I/O] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/General%20Digital%20I:O.png)
 
+* [How I/O pins work - Sahil Khanna](http://sahilkhanna.org/blog/wp-content/uploads/2014/11/how-io-pin-works.pdf)  
+
 #####PORTx
 + A register that stores data that is available at the physical pin. Stores data on **WPx** rising edge.
 + This register can be both written to and read from. Outputs to the data bus if **RRx** is enabled (you can use it to check what is already there)
@@ -151,46 +153,38 @@ More robust
 
 
 ####Lecture 6
-**Q1**  
-4V * 100mA / 90% / 3.2V = 139mA
+**Q1** 4V * 100mA / 90% / 3.2V = 139mA
 
-**Q2**  
-90%
+**Q2** 90%
 
 
 ####Lecture 7
-**Q1**  
-Why would you not have an external pull-up resistor on an input to the ATmega 16?
+**Q1** Why would you not have an external pull-up resistor on an input to the ATmega 16?
 
 Because ATMEGA16 input pins have software enabled pull up resistors.
 
-**Q2**  
-1mAh / 1uA = 1000h = 41.7 days
+**Q2** 1mAh / 1uA = 1000h = 41.7 days
 
 
 ####Lecture 8
-**Q1**  
-Why don't you drive the backlight of the LCD directly from the output of the ATmega 16?
+**Q1** Why don't you drive the backlight of the LCD directly from the output of the ATmega 16?
 
 Each microcontroller pin can only source 80mA, not enough to drive LCD.
 
-**Q2**  
-Why would you put a 15 ohm resistor in series with the MOSFET's gate?
+**Q2** Why would you put a 15 ohm resistor in series with the MOSFET's gate?
 
 For any MOSFET that G is essentially a capacitor, should have a resistor between G and a microcontroller to avoid a current surge.
 
 
 ####Lecture 9
-**Q1**  
-Why would you not place parts under a component such as an LCD or battery holder?
+**Q1** Why would you not place parts under a component such as an LCD or battery holder?
 
 Never put SMD parts under other parts. Don't have parts under the LCD or the battery pack.  
 Otherwise, we have to remove a large component to fix them. Debugging the circuit would be difficult without immediate access to the components.  
 Heat dissipation might be an issue depending what these components are.  
 There will not be even space to put up LCD over a big capacitor.
 
-**Q2**  
-What order did you place your components and why.
+**Q2** What order did you place your components and why.
 
 1 LCD, battery pack, buttons. (through-hole componets that influence the other side of the PCB; ergonomics consideration) 
 2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
@@ -198,8 +192,7 @@ What order did you place your components and why.
 
 
 ####Lecture 11
-**Q1**  
-Why might you have a big ground plane and Vcc plane on a multilayer board?
+**Q1** Why might you have a big ground plane and Vcc plane on a multilayer board?
 
 Act as a good capacitor to decouple the system.  
 Easy to make shorter tracks to the pins/devices that require GND or VCC.  
@@ -207,36 +200,30 @@ Guaranteed path of lowest inductance.
 
 Ensure shortest possible return path for signals.
 
-**Q2**  
-Why would you terminate a PCB track with a resistor?
+**Q2** Why would you terminate a PCB track with a resistor?
 
 A signal travelling down an unterminated wire will reflect doubling the voltage on the way back.  
 By matching the impedance of your track with the input impedance of the device, these reflections can be eliminated. (often with the help of a termination resistor)
 
-**Q3**  
-Why might you swap general IO pins around on a microcontroller?
+**Q3** Why might you swap general IO pins around on a microcontroller?
 
 In order to optimize PCB layout.  
 General I/O pins are completely interchangeable.
 
 
 ####Lecture 16
-**Q1**  
-Referencing to page 8 of the Atmega 16 datasheet, describe what happens when the following instructions are executed by the ATmega 16.
+**Q1** Referencing to page 8 of the Atmega 16 datasheet, describe what happens when the following instructions are executed by the ATmega 16.
 
-**Q2**  
-What is the most important part of soldering?
+**Q2** What is the most important part of soldering?
 
 + Heat transfer
 + Make sure the area is clean and the tip is well tinned.
 + Make sure the temperature is set to a suitable range(300 C). Otherwise, the solder might get oxidized.
 
 ####Lecture 17
-**Q1**  
-Describe how a file is converted from a .c and .h file into machine code.
+**Q1** Describe how a file is converted from a .c and .h file into machine code.
 
-**Q3**  
-Why don't you use malloc or calloc on an AVR?
+**Q3** Why don't you use malloc or calloc on an AVR?
 
 No operating system to catch faults.  
 The microcontroller does not have an operating system that ensures important reserved memories are left untouched.
@@ -358,7 +345,7 @@ simultaneous /ˌsɪməlˈteɪnɪəs/ adj.
 Things which are simultaneous happen or exist at the same time. 同时的
 
 polling n.  
-Polling, or polled operation, in computer science, refers to actively sampling the status of an external device by a client program as a synchronous activity. Polling is most often used in terms of input/output (I/O), and is also referred to as polled I/O or software-driven I/O. 论询
+Polling, or polled operation, in computer science, refers to actively sampling the status of an external device by a client program as a synchronous activity. Polling is most often used in terms of input/output (I/O), and is also referred to as polled I/O or software-driven I/O. 轮询
 
 Polling is checking if the button is pressed over and over again.  
 wastes CPU cycles  
