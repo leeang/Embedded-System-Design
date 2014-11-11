@@ -119,15 +119,16 @@ ADD Register 1 to Register 2
 + Connected to the tri-state buffer at the output of PORTx.
 + This register can be written and readfrom (you can use it to check what is already there). Available on data bus when **RDx** is enabled
 
+#####Metastability
++ If the clock edge and the data edge occurs at the same time then a race condition occurs.
++ It will remain in this state until noise knkocks it out of that state.
++ The time it is in the metastable state varies but takes on a probabilistic curve.
+
 #####PINx
 + Diodes ensure that voltage on the pin are not 1 diode drop higher than VCC or 1 diode drop lower than GND
 + R<sub>pu</sub> is between 20k and 50k ohms
 
 **What is the main use of the 2 stage synchronizer connected to each I/O pin?**
-
-+ If the clock edge and the data edge occurs at the same time then a race condition occurs.
-+ It will remain in this state until noise knkocks it out of that state.
-+ The time it is in the metastable state varies but takes on a probabilistic curve.
 
 + Two registers. If metastability occurs, it occurs at the first register.
 + By the time it arrives at the next register PINx, it should be stable.
