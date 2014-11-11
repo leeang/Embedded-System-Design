@@ -108,7 +108,7 @@ ADD Register 1 to Register 2
 ###AVR GCC Flowchart
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
 
-High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** looks for definitions of operators used by this .obj file from related libraries and adds the startup code to generate a .elf file. Eventually, the .elf file is converted into a hex file (which will be uploaded to the programmer) by the **object copy**.
+High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** links related libraries and adds the startup code to generate a .elf file. Eventually, the .elf file is converted into a hex file (which will be uploaded to the programmer) by the **object copy**.
 
 ##Example Exam Question
 ####Lecture 6
@@ -137,11 +137,15 @@ For any MOSFET that G is essentially a capacitor, should have a resistor between
 
 ####Lecture 9
 **Q1**  
-Never put SMD parts under other parts. Don't have parts under the LCD or the battery pack.
-Not accessible.
+Why would you not place parts under a component such as an LCD or battery holder?  
+Never put SMD parts under other parts. Don't have parts under the LCD or the battery pack.  
+Otherwise, we have to remove a large component to fix them. Debugging the circuit would be difficult without immediate access to the components.  
+Heat dissipation might be an issue depending what these components are.  
+There will not be even space to put up LCD over a big capacitor.
 
 **Q2**  
-1 LCD, battery pack, buttons.  
+What order did you place your components and why.  
+1 LCD, battery pack, buttons. (through-hole componets that influence the other side of the PCB) 
 2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
 3 the rest.
 
@@ -155,15 +159,17 @@ A signal travelling down an unterminated wire will reflect doubling the voltage 
 By matching the impedance of your track with the input impedance of the device, these reflections can be eliminated. (often with the help of a termination resistor)
 
 **Q3**  
-In order to optimize PCB layout.
+In order to optimize PCB layout.  
+General I/O pins are completely interchangeable.
 
 
 ####Lecture 17
 **Q1**  
 Describe how a file is converted from a .c and .h file into machine code.
 
-**Q3**
-No operating system to catch faults.
+**Q3**  
+No operating system to catch faults.  
+The microcontroller does not have an operating system that ensures important reserved memories are left untouched.
 
 
 
@@ -368,7 +374,7 @@ crosstalk /ˈkrɒsˌtɔːk/ n.
 unwanted signals in one channel of a communications system as a result of a transfer of energy from one or more other channels 电信频道之间的串话干扰
 
 
-####Lecture 11 Finding Componets
+####Lecture 11 Finding Components
 
 
 ####Lecture 12 Microcontroller Internals
@@ -380,6 +386,9 @@ a quantity or function upon which a mathematical or logical operation is perform
 rehash  
 n. If you describe something as a rehash, you are criticizing it because it repeats old ideas, facts, or themes, though some things have been changed to make it appear new. 重复; 老调重弹  
 v. If you say that someone rehashes old ideas, facts, or accusations, you disapprove of the fact that they present them in a slightly different way so that they seem new or original. 只作轻微改动; 换汤不换药
+
+ALU  
+Arithmetic Logical Unit
 
 
 ####Lecture 14 Microcontroller Internals
@@ -467,4 +476,13 @@ If something has intrinsic value or intrinsic interest, it is valuable or intere
 
 sequential adj.  
 Something that is sequential follows a fixed order. 按次序的; 顺序的 [正式]
+
+untouched adj.  
+Something that is untouched by something else is not affected by it. 不受影响的
+
+interference n.  
+When there is interference, a radio signal is affected by other radio waves or electrical activity so that it cannot be received properly. 干扰
+
+explicit adj.  
+Something that is explicit is expressed or shown clearly and openly, without any attempt to hide anything. 明确表达的; 公开显露的
 
