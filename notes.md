@@ -441,3 +441,27 @@ An interpretation of something is an opinion about what it means. 解释
 
 diagonal adj.  
 A diagonal line or movement goes in a sloping direction, for example, from one corner of a square across to the opposite corner. 对角线的; 斜的
+
+##Q & A on Facebook
+suction n.  
+Suction is the process by which liquids, gases, or other substances are drawn out of somewhere. 抽吸(液体、汽体等)
+
+vent n.  
+A vent is a hole in something through which air can come in and smoke, gas, or smells can go out. 通风孔; 排放口
+
+
+sluggish adj.  
+You can describe something as sluggish if it moves, works, or reacts much slower than you would like or is normal. 缓慢的; 迟钝的
+
+inrush n.  
+a sudden usually overwhelming inward flow or rush; influx 涌入; 流入
+
+in the proximity of...  
+在...附近
+
+intrinsic adj.  
+If something has intrinsic value or intrinsic interest, it is valuable or interesting because of its basic nature or character, and not because of its connection with other things. 内在的; 本质的 [正式]
+
+sequential adj.  
+Something that is sequential follows a fixed order. 按次序的; 顺序的 [正式]
+
