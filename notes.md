@@ -105,6 +105,17 @@ ADD Register 1 to Register 2
 ###General Digital I/O
 ![General Digital I/O] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/General%20Digital%20I:O.png)
 
+**What is the main use of the 2 stage synchronizer connected to each I/O pin?**
+
+If the clock edge and the data edge occurs at the same time then a race condition occurs.  
+It will remain in this state until noise knkocks it out of that state.  
+The time it is in the metastable state varies but takes on a probabilistic curve.
+
+Two registers. If metastability occurs, it occurs at the first register.  
+By the time it arrives at the next register PINx, it should be stable.  
+There is a two I/O clock cycle delay before data arrives at the data bus.  
+When RPx is enabled the state at PINx is available on the bus.
+
 ###AVR GCC Flowchart
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
 
@@ -184,11 +195,6 @@ The microcontroller does not have an operating system that ensures important res
 
 Why should you tent vias underneath components?  
 There is a chance of a via accidentally connecting with the component (placed above) if it is not tented. Tent forms an insulating cover on the via. To prevent short-circuit under the component.
-
-What is the main use of the 2 stage synchronizer connected to each I/O pin?  
-If the clock edge and the data edge occurs at the same time then a race condition occurs.  
-It will remain in this state until noise knkocks it out of that state.  
-The time it is in the metastable state varies but takes on a probabilistic curve.
 
 
 
