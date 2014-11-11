@@ -233,6 +233,19 @@ No operating system to catch faults.
 The microcontroller does not have an operating system that ensures important reserved memories are left untouched.
 
 ####Lecture 22
+**Q2** Explain the steps to set up the ADC such that it samples ADC7 pin in reference to the internal 2.56v reference. Explain how to start a conversion and where the result is made available.
+
+	void analogReadInit(void) {
+		ADMUX = _BV(REFS1) | _BV(REFS0) | _BV(MUX2) | _BV(MUX1) | _BV(MUX0);
+		ADCSRA = _BV(ADEN) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0);
+	}
+
+	unsigned int analogRead(void) {
+		ADCSRA |= _BV(ADSC);
+		while( ADCSRA & _BV(ADSC) );
+		return ADC;
+	}
+
 **Q4** Why would you place a small ground plane around the crystal with lots of vias?
 
 If possible, place a guard ring (connected to ground) around the crystal. This helps isolate the crystal from noise coupled from adjacent signals. http://www.emesystems.com/pdfs/parts/DS1307_xtal.pdf
