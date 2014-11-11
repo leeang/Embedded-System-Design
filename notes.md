@@ -109,33 +109,64 @@ ADD Register 1 to Register 2
 ![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
 
 ##Example Exam Question
-#### Lecture 6
+####Lecture 6
 **Q1**  
 4V * 100mA / 90% / 3.2V = 139mA
 
 **Q2**  
 90%
 
-#### Lecture 7
 
+####Lecture 7
 **Q1**  
 Because ATMEGA16 input pins have software enabled pull up resistors.
 
 **Q2**  
 1mAh / 1uA = 1000h = 41.7 days
 
-####Lecture 1
-####Lecture 1
-####Lecture 1
-####Lecture 1
-####Lecture 1
-####Lecture 1
-####Lecture 1
+
+####Lecture 8
+**Q1**  
+Each microcontroller pin can only source 80mA, not enough to drive LCD.
+
+**Q2**  
+For any MOSFET that G is essentially a capacitor, should have a resistor between G and a microcontroller to avoid a current surge.
+
+
+####Lecture 9
+**Q1**  
+Never put SMD parts under other parts. Don't have parts under the LCD or the battery pack.
+Not accessible.
+
+**Q2**  
+1 LCD, battery pack, buttons.  
+2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
+3 the rest.
+
+
+####Lecture 11
+**Q1**  
+Ensure shortest possible return path for signals.
+
+**Q2**  
+A signal travelling down an unterminated wire will reflect doubling the voltage on the way back.  
+By matching the impedance of your track with the input impedance of the device, these reflections can be eliminated. (often with the help of a termination resistor)
+
+**Q3**  
+In order to optimize PCB layout.
+
+
+####Lecture 17
+**Q1**
+
+**Q3**
+No operating system to catch faults.
+
+
 
 ##Lecture Notes
 
 ####Lecture 1
-
 tacit knowledge n.  
 隐性知识
 
@@ -175,6 +206,7 @@ pro-active adj.
 assumed knowledge n.  
 先修课程
 
+
 ####Lecture 2 Revision
 0805 resistor max power dissipation = 0.125 Watt.
 
@@ -197,6 +229,7 @@ tristate = not connected = floating
 peripheral n. /pəˈrɪfərəl/  
 Peripherals are devices that can be attached to computers. (计算机的) 外围设备 [计算机]
 
+
 ####Lecture 3 Printed Circuit Boards
 plage v.  
 电镀
@@ -215,6 +248,7 @@ If metal or stone corrodes, or is corroded, it is gradually destroyed by a chemi
 
 lacquer /ˈlækə/ n.  
 Lacquer is a special liquid which is painted on wood or metal in order to protect it and to make it shiny. 保护漆
+
 
 #### Lecture 5 Power Supply
 battery holder n.  
@@ -236,8 +270,8 @@ In electronics, an anode is the positive electrode in a cell such as a battery. 
 cathode /ˈkæθəʊd/ n.  
 A cathode is the negative electrode in a cell such as a battery. 阴极
 
-####Lecture 6 Push Buttons, Interrupts, LEDs
 
+####Lecture 6 Push Buttons, Interrupts, LEDs
 simultaneous /ˌsɪməlˈteɪnɪəs/ adj.  
 Things which are simultaneous happen or exist at the same time. 同时的
 
@@ -258,8 +292,8 @@ If you say that an event is predictable, you mean that it is obvious in advance 
 Reset button  
 Good practice to use an external pull up and possibly a capacitor to ensure no accidental reset due to noise in the system.
 
-####Lecture 7 LEDs, SPI, LCD, RAM & ADC
 
+####Lecture 7 LEDs, SPI, LCD, RAM & ADC
 LED  
 Voltage drop across a diode depends on the colour of the diode.
 Current across an ideal diode is infinite, must always have a resistor in series or magic smoke escapes.
@@ -270,14 +304,8 @@ spin n.
 electron n.  
 电子
 
+
 ####Lecture 8 Crystals and PCBs
-
-**Q1**  
-Each microcontroller pin can only source 80mA, not enough to drive LCD.
-
-**Q2**  
-For any MOSFET that G is essentially a capacitor, should have a resistor between G and a microcontroller to avoid a current surge.
-
 ergonomic /ˌɜːɡəˈnɒmɪk/ adj.  
 of or relating to ergonomics 人类工程学的
 
@@ -310,17 +338,8 @@ Wider, less inductance.
 High current tracks take the path of least resistance.
 High frequency tracks take the path of least inductance.
 
+
 ####Lecture 9 PCB Do's and Don'ts
-
-**Q1**  
-Never put SMD parts under other parts. Don't have parts under the LCD or the battery pack.
-Not accessible.
-
-**Q2**  
-1 LCD, battery pack, buttons.  
-2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
-3 the rest.
-
 Ground plane provides short signal return loops.
 
 Should tent vias underneath components.
@@ -333,8 +352,8 @@ If you siphon liquid from a container, you make it come out through a tube and d
 0603 for some capacitors  
 0805 for resistors, diodes.
 
-####Lecture 10 Advanced PCB Design
 
+####Lecture 10 Advanced PCB Design
 annular /ˈænjʊlə/ adj.  
 ADJ ring-shaped; of or forming a ring 环状的; 环的或形成环的
 
@@ -345,39 +364,30 @@ An aerial is a device or a piece of wire that sends and receives television or r
 crosstalk /ˈkrɒsˌtɔːk/ n.  
 unwanted signals in one channel of a communications system as a result of a transfer of energy from one or more other channels 电信频道之间的串话干扰
 
+
 ####Lecture 11 Finding Componets
 
-**Q1**  
-Ensure shortest possible return path for signals.
-
-**Q2**  
-A signal travelling down an unterminated wire will reflect doubling the voltage on the way back.  
-By matching the impedance of your track with the input impedance of the device, these reflections can be eliminated. (often with the help of a termination resistor)
-
-**Q3**  
-In order to optimize PCB layout.
 
 ####Lecture 12 Microcontroller Internals
-
 operand n.  
 a quantity or function upon which a mathematical or logical operation is performed 操作数
 
-####Lecture 13 Microcontroller Internals
 
+####Lecture 13 Microcontroller Internals
 rehash  
 n. If you describe something as a rehash, you are criticizing it because it repeats old ideas, facts, or themes, though some things have been changed to make it appear new. 重复; 老调重弹  
 v. If you say that someone rehashes old ideas, facts, or accusations, you disapprove of the fact that they present them in a slightly different way so that they seem new or original. 只作轻微改动; 换汤不换药
 
-####Lecture 14 Microcontroller Internals
 
+####Lecture 14 Microcontroller Internals
 consecutive adj.  
 Consecutive periods of time or events happen one after the other without interruption. 连续的
 
 metastability n.  
 亚稳态
 
-####Lecture 15 Assembly, Testing, JTAG
 
+####Lecture 15 Assembly, Testing, JTAG
 flush adj.  
 level or even with another surface (与另一平面)平齐的
 
@@ -407,12 +417,8 @@ If someone blows something up or if it blows up, it is destroyed by an explosion
 intermittent adj.  
 Something that is intermittent happens occasionally rather than continuously. 断断续续的
 
+
 ####Lecture 17 Interrupts and Good Code
-
-**Q1**
-
-**Q3**
-No operating system to catch faults.
 
 
 ####Lecture 20 Exam Rules
