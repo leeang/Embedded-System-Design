@@ -20,5 +20,5 @@
 * Game (draw picture, toggle 'keep pixel' by pressing button A)  
 
 ###My Websites:
-* [blog.leeang.com](http://blog.leeang.com/)  
+* [angli.me](http://angli.me/)  
 * [FeiTsui Cantonese Lyrics](http://yygeci.com/)  

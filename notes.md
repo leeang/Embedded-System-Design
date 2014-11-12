@@ -13,7 +13,7 @@
 
 
 ###AVR GCC Flowchart (2014 Q3 i)
-![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
+![AVR GCC] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/AVR-GCC.png)
 
 High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** links related libraries and adds the startup code to generate a .elf file. Eventually, the **object copy** converted the .elf file into a hex file which will be uploaded to the programmer.
 
@@ -30,6 +30,17 @@ If the Global Interrupt Enable (GIE) is set:
 6. This returns the previous **program counter** from the stack  
 7. Enables **GIE** (instruction is SEI SEt Interrupt)  
 8. Executes one more instruction before servicing any more ISRs
+
+###Self documenting Code
+
+	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
+	#define GET(PIN, MASK) PIN & MASK
+
+	#define SPI_ENABLE (_BV(SPIE) | _BV(SPE))
+	SET(SPCE, SPI_ENABLE, ON);
+
+An example of self-documenting code [2014 Q4 iii](https://github.com/leeang/Embedded-System-Design/blob/master/2014Q4-3.c)
+
 
 ###Assembly Language
 ![Architecture] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/architecture.png)
@@ -82,18 +93,6 @@ ADD Register 1 to Register 2
   - The **input** of register for PORTB is **enabled**
 + On clock5 rising edge output of r1 is latched into PORTB, the output is then available on the external pins
 
-###Self documenting Code
-	#define ON 0xFF
-	#define INFINITE_LOOP 1
-
-	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
-	#define GET(PIN, MASK) PIN & MASK
-
-	SET(PORTB, _BV(PB6), ON);
-
-	#define SPI_ENABLE (_BV(SPIE) | _BV(SPE))
-	SET(SPCE, SPI_ENABLE, ON);
-
 ###Etch a Sketch
 	while(INFINITE_LOOP) {
 		if(upButton) row++;
@@ -134,7 +133,7 @@ ADD Register 1 to Register 2
 
 #####Metastability
 + If the clock edge and the data edge occurs at the same time then a race condition occurs.
-+ It will remain in this state until noise knkocks it out of that state.
++ It will remain in this state until noise knocks it out of that state.
 + The time it is in the metastable state varies but takes on a probabilistic curve.
 
 #####PINx
