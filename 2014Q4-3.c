@@ -27,7 +27,7 @@ while (1) {
 /********* /Source Code *********/
 
 /********* Self-documenting Code ********* *********/
-#define SET(REGISTER, MASK, VALUE)		PORT = ( (MASK & VALUE) | (REGISTER & ~MASK))
+#define SET(REGISTER, MASK, VALUE)	PORT = ( (MASK & VALUE) | (REGISTER & ~MASK))
 #define RED_LED_MASK	_BV(PA0);
 #define GREEN_LED_MASK	_BV(PA4);
 #define ON		0xFF
