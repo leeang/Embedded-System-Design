@@ -3,12 +3,12 @@
 > Github: [github.com/leeang/Embedded-System-Design](https://github.com/leeang/Embedded-System-Design)
 
 ##Key Point
+1. .c .h .s .elf .hex (flowchart)
 1. Interrupt Service Routine
-1. diagram on datasheet page 8 / Assembly Language
 1. self documenting
+1. diagram on datasheet page 8 / Assembly Language
 1. etch a sketch code
 1. diagram on datasheet page 51 / General Digital I/O
-1. .c .h .s .elf .hex (flowchart)
 1. Power & LCD schematic
 
 
@@ -150,8 +150,6 @@ ADD Register 1 to Register 2
 
 
 ###Power & LCD schematic
-![Power Schematic] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/Power%20Schematic.png)
-![LCD Schematic] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/LCD%20Schematic.png)
 
 
 
