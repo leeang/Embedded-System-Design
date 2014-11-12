@@ -35,7 +35,7 @@ while (1) {
 #define INFINITE_LOOP	1
 #define DELAY_LENGTH	2000
 
-void main() {
+void main(void) {
 	while (INFINITE_LOOP) {
 		SET(PORTA, RED_LED_MASK, ON);
 		SET(PORTA, GREEN_LED_MASK, ON);
@@ -45,7 +45,7 @@ void main() {
 	}
 }
 
-void delay2us() {
+void delay2us(void) {
 	unsigned int delayIndex, y=0;
 	for (delayIndex=DELAY_LENGTH; delayIndex>=0; delayIndex--) {
 		y += 2;
