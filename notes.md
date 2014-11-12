@@ -11,7 +11,13 @@
 1. .c .h .s .elf .hex (flowchart)
 1. Power & LCD schematic
 
-###Interrupt Service Routine
+
+###AVR GCC Flowchart (2014 Q3 i)
+![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
+
+High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** links related libraries and adds the startup code to generate a .elf file. Eventually, the **object copy** converted the .elf file into a hex file which will be uploaded to the programmer.
+
+###Interrupt Service Routine (2014 Q3 ii)
 What happens during an ISR  
 Interrupt arrives at the interrupt unit
 
@@ -62,9 +68,9 @@ ADD Register 1 to Register 2
 + **Program counter** points to program address with `add r1, r2`
 + On rising edge of clock3, the instruction is latched into the **instruction register** and the **program counter** is incremented
 + The instruction is decoded and the control signals are activated to do the following
-  - Output the value from register 1 to input 1 of the ALU
-  - Output the value from register 2 to input 2 of the ALU
-  - The ALU instruction is set to ADD
+  - Output the value from register 1 to **input 1 of the ALU**
+  - Output the value from register 2 to **input 2 of the ALU**
+  - The ALU instruction is set to **ADD**
   - The **input** of register 1 is **enabled**
 
 **Execution of program line 4**
@@ -142,10 +148,6 @@ ADD Register 1 to Register 2
 + There is a two I/O clock cycle delay before data arrives at the data bus.
 + When **RPx** is enabled the state at PINx is available on the bus.
 
-###AVR GCC Flowchart
-![AVR GCC] (http://upload.wikimedia.org/wikipedia/commons/0/0f/Avr-gcc.png)
-
-High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** links related libraries and adds the startup code to generate a .elf file. Eventually, the .elf file is converted into a hex file (which will be uploaded to the programmer) by the **object copy**.
 
 ###Power & LCD schematic
 ![Power Schematic] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/Power%20Schematic.png)
