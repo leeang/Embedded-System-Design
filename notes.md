@@ -194,9 +194,9 @@ There will not be even space to put up LCD over a big capacitor.
 
 **Q2** What order did you place your components and why.
 
-1 LCD, battery pack, buttons. (through-hole componets that influence the other side of the PCB; ergonomics consideration) 
-2 microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)  
-3 the rest.
+1. LCD, battery pack, buttons. (through-hole componets that influence the other side of the PCB; ergonomics consideration)
+1. microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)
+1. the rest.
 
 
 ####Lecture 11
