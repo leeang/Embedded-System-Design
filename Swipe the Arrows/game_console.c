@@ -8,7 +8,7 @@ F-RAM:			FM25L16B
 
 Author:			Ang Li
 E-mail:			ang#ang.im	(substitute @ for #)
-Blog:			http://blog.leeang.com/
+Blog:			http://angli.me/
 Github:			https://github.com/leeang/Embedded-System-Design
 
 ********* ********* ********* ********* ********* ********* ********* ********* *********/
