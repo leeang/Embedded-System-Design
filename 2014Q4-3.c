@@ -30,8 +30,8 @@ while (1) {
 #define SET(REGISTER, MASK, VALUE)		PORT = ( (MASK & VALUE) | (REGISTER & ~MASK))
 #define RED_LED_MASK	_BV(PA0);
 #define GREEN_LED_MASK	_BV(PA4);
-#define ON				0xFF
-#define OFF				0x00
+#define ON		0xFF
+#define OFF		0x00
 #define INFINITE_LOOP	1
 #define DELAY_LENGTH	2000
 

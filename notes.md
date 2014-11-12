@@ -31,7 +31,7 @@ If the Global Interrupt Enable (GIE) is set:
 7. Enables **GIE** (instruction is SEI SEt Interrupt)  
 8. Executes one more instruction before servicing any more ISRs
 
-###Self documenting Code
+###Self documenting Code (2014 Q4 iii)
 
 	#define SET(REGISTER, MASK, VALUE) REGISTER = ((VALUE & MASK) | (REGISTER & ~MASK))
 	#define GET(PIN, MASK) PIN & MASK
@@ -39,7 +39,7 @@ If the Global Interrupt Enable (GIE) is set:
 	#define SPI_ENABLE (_BV(SPIE) | _BV(SPE))
 	SET(SPCE, SPI_ENABLE, ON);
 
-An example of self-documenting code [2014 Q4 iii](https://github.com/leeang/Embedded-System-Design/blob/master/2014Q4-3.c)
+An example of self-documenting code: [2014 Q4 iii](https://github.com/leeang/Embedded-System-Design/blob/master/2014Q4-3.c)
 
 
 ###Assembly Language
