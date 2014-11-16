@@ -3,6 +3,8 @@
 > Github: [github.com/leeang/Embedded-System-Design](https://github.com/leeang/Embedded-System-Design)
 
 ##Key Point
+
+1. SPI diagram & procedure
 1. .c .h .s .elf .hex (flowchart)
 1. Interrupt Service Routine
 1. self documenting
@@ -10,6 +12,9 @@
 1. etch a sketch code
 1. diagram on datasheet page 51 / General Digital I/O
 1. Power & LCD schematic
+
+
+###SPI diagram & procedure (2014 Q2)
 
 
 ###AVR GCC Flowchart (2014 Q3 i)
@@ -148,9 +153,6 @@ ADD Register 1 to Register 2
 + When **RPx** is enabled the state at PINx is available on the bus.
 
 
-###Power & LCD schematic
-
-
 
 ##Example Exam Question
 ####Lecture 3
@@ -192,7 +194,7 @@ Otherwise, we have to remove a large component to fix them. Debugging the circui
 Heat dissipation might be an issue depending what these components are.  
 There will not be even space to put up LCD over a big capacitor.
 
-**Q2** What order did you place your components and why.
+**Q2** What order did you place your components and why. (2014 Q4, providing the list of components.)
 
 1. LCD, battery pack, buttons. (through-hole componets that influence the other side of the PCB; ergonomics consideration)
 1. microcontroller, crystal, decoupling capacitors, RAM. (high speed lines & sensitive analog lines)
