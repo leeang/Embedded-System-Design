@@ -120,7 +120,7 @@ ADD Register 1 to Register 2
 	}
 
 ###General Digital I/O
-![General Digital I/O] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/General%20Digital%20I:O.png)
+![General Digital I/O] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/General%20Digital%20IO.png)
 
 [How I/O pins work - Sahil Khanna](http://sahilkhanna.org/blog/wp-content/uploads/2014/11/how-io-pin-works.pdf)  
 
