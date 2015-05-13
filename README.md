@@ -1,5 +1,7 @@
 ##ELEN90066 Embedded System Design
 
+[Past Paper Recall and Example Exam Questions](https://github.com/leeang/Embedded-System-Design/blob/master/notes.md)
+
 ###"Swipe the Arrows" folder has following functions:
 * Button  
 * Backlight with PWM (adjust luminance by pressing button B)  
@@ -19,6 +21,5 @@
 * Frame buffer  
 * Game (draw picture, toggle 'keep pixel' by pressing button A)  
 
-###My Websites:
-* [angli.me](http://angli.me/)  
-* [FeiTsui Cantonese Lyrics](http://yygeci.com/)  
+###My Blog
+[angli.me](http://angli.me/)
