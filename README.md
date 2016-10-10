@@ -22,6 +22,3 @@
 * Interrupt (button)  
 * Frame buffer  
 * Game (draw picture, toggle 'keep pixel' by pressing button A)  
-
-###My Blog
-[angli.me](http://angli.me/)
