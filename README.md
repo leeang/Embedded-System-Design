@@ -2,8 +2,6 @@
 
 ![project photo] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/photo.jpg)
 
-[Past Paper Recall and Example Exam Questions](https://github.com/leeang/Embedded-System-Design/blob/master/notes.md)
-
 ###"Swipe the Arrows" folder has following functions:
 * Button  
 * Backlight with PWM (adjust luminance by pressing button B)  
