@@ -1,5 +1,4 @@
 > Author: Ang Li  
-> Blog: [angli.me](http://angli.me/)  
 > Github: [github.com/leeang/Embedded-System-Design](https://github.com/leeang/Embedded-System-Design)
 
 ##Key Point
@@ -18,6 +17,7 @@
 
 
 ###AVR GCC Flowchart (2014 Q3 i)
+
 ![AVR GCC] (https://raw.githubusercontent.com/leeang/Embedded-System-Design/master/img/AVR-GCC.png)
 
 High level language files get compiled into .s files (speaking Assembly Language) by the **C Compiler**. Then the **Assembler** forms a .obj file from these .s & .S files. At the next stage, the **Linker** links related libraries and adds the startup code to generate a .elf file. Eventually, the **object copy** converted the .elf file into a hex file which will be uploaded to the programmer.
